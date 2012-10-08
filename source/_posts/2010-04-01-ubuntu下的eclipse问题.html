@@ -1,0 +1,25 @@
+---
+layout: post
+title: ubuntu下的eclipse问题
+categories:
+- Linux
+tags:
+- eclipse
+- Google App Engine
+- java
+- pydev
+- ubuntu
+published: true
+comments: true
+---
+<p>ubuntu下的默认eclipse有很多问题，我Google了很久才知道，是openjdk的问题。</p>
+
+<p>因为sun的java jdk不是GPL协议，所以Ubuntu默认eclipse依赖open jdk，也可能是default jdk(GNU 的那个)，总之不是sun的版本。</p>
+
+<p>对于哪个JDK版本，我无所谓，只是安装pydev的时候，如果依赖的不是sun jdk，就会有错误，错误还莫名其妙。</p>
+
+<p>在网上找到一个办法，不是特别靠谱，因为我的版本是10.04的lucid，那些方法都是以前的一些配置方法，不过死马当作活马医，试试居然还行。</p>
+
+<p>只需要确定你安装了sun-java6-jdk，eclipse这两个包，然后在终端输入如下命令:
+<pre lang="bash">sudo update-java-alternatives -s java-6-sun</pre>
+这样，eclipse就可以安装pydev了。</p>

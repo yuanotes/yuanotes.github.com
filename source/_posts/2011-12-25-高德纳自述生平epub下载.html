@@ -1,0 +1,32 @@
+---
+layout: post
+title: 高德纳自述生平epub下载
+categories:
+- 未分类
+tags:
+- 传记
+- 读书
+published: true
+comments: true
+---
+<p>具体下载过程，我可能描述的不太清楚，呃，将就着看吧，我太懒了。</p>
+
+<p>这些资料看视频是很无聊的，一个老头在那里讲，听着听着就睡着了。</p>
+
+<p>有网友提供了整个视频的字幕，其实也就是文本文件，地址是<a href="https://github.com/kragen/knuth-interview-2006" target="_blank">https://github.com/kragen/knuth-interview-2006</a>。</p>
+
+<p>如果你确实喜欢看视频，地址在这里<a href="http://webofstories.com/play/17060" target="_blank">http://webofstories.com/play/17060</a>。</p>
+
+<p>进入正题：
+<ol>
+	<li>我这里不提供epub下载，所以纯粹为了找epub文件的要失望了。因为我不想把我的博客变成下载站。</li>
+	<li>首先，去<a title="http://dotepub.com/" href="http://dotepub.com/" target="_blank">http://dotepub.com/</a>下载这个插件。嗯，你也可以通过书签的方式来使用。</li>
+	<li>去上面的github网址<a href="https://github.com/kragen/knuth-interview-2006" target="_blank">https://github.com/kragen/knuth-interview-2006</a>。然后点击dotepub插件或者嗯，书签。接下来会有个epub文件下载，下载下来就好了。如果你使用的电脑来下载的话，我个人推荐下载到dropbox这一类同步工具中。通过android还有ipad下载，我还没测试过，原因见下一步。</li>
+	<li><strong>[optional]</strong>dotepub默认会去掉网页中的链接，也就是说，会去掉那些小节的标题。我们当然想看到标题了。根据dotepub的描述，去掉immersive选项就可以了。但是在我这里，他们提供的chrome插件是有问题的，我用的是书签。总是，我下载的文件，那些标题都没有了。</li></ol></p>
+
+<p>我用的办法是，在chrome里面执行：
+<pre lang="javascript">$('h2').each(function(){var t=$('a',this).text();$(this).text(t);})</pre>
+
+</p>
+
+<p>EOF</p>

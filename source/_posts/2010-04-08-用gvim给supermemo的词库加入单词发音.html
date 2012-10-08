@@ -1,0 +1,32 @@
+---
+layout: post
+title: 用gvim给supermemo的词库加入单词发音
+categories:
+- 软件
+tags:
+- Anki
+- English
+- supermemo
+- vim
+published: true
+comments: true
+---
+<p><strong>正在用anki，没supermemo出名也无所谓，适合自己用就行了。</strong></p>
+
+<p>supermemo挺好用的，缺点就是支持多平台不太好，然后就是界面让人感觉很糟糕，太复杂了。</p>
+
+<p>还有一个致命的缺点就是网上的词库大多是ppc一类的，很少有PC版的。至少我搜GRE词库的时候是如此的。</p>
+
+<p>不过幸好，我还是找到了Q&amp;A的txt版本的红宝书词库。不过这个词库没有单词发音。</p>
+
+<p>于是我用vim的正则替换来给这个词库添加音频文件。</p>
+
+<p>这个正则表达式非常复杂，至少我自己是这么认为的，惨不忍睹……</p>
+
+<p>vim命令：
+<pre lang="vim">%s/\(\s<b>\s\)\@<=\(\(\h\)\w\+\)\(.\+\)\(<font\)/\2\4<bgsound src="”file:\/\/\/e:\/supermemo\/speech\/langwen2005updated_American\/\3\/\2.mp3″" loop="TRUE">\5/gc</bgsound></b></pre>
+我的音频文件放在E:/supermemo/speech/langwen2005updated_American文件夹下。</p>
+
+<p>一次次按完Y之后，发现基本正确，然后就直接按A了。接下来VIM处于“无响应的状态”，等一会儿就都好了。</p>
+
+<p>突然觉得VIM好强大啊……</p>

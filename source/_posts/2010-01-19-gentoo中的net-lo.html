@@ -1,0 +1,11 @@
+---
+layout: post
+title: gentoo中的net.lo
+categories:
+- Linux
+tags:
+- gentoo
+published: true
+comments: true
+---
+<p>前几天设置GAE proxy，不成功。Local的那个状态没有显示。<br /><br />今天不想复习了，配置tor，还是不成功。<br /><br />但是我发现了一个小小的问题，那就是torrc的SocksListenAddress我不能设置成localhost或者127.0.0.1。我猜是不是本地localhost设置出了什么问题。<br /><br />于是看了下ifconfig，发现果然没有lo的信息。<br /><br />于是启动net.lo，哈哈，出现了，tor搞定了。<br /><br /></p>

@@ -1,0 +1,23 @@
+---
+layout: post
+title: evince显示中文pdf乱码
+categories:
+- Linux
+- 软件
+tags:
+- evince
+- gnome
+- pdf
+- ubuntu
+published: true
+comments: true
+---
+<p>在gnome里面，evince算是比较小巧的pdf阅读器了，相比于adobe reader以及xpdf这些臃肿又不美观的东西。</p>
+
+<p>但是evince显示某些pdf的时候，中文是乱码或者干脆什么都没有，有个很简单的办法解决这个问题，安装poppler-data就可以了。</p>
+
+<p>Ubuntu直接运行：
+<pre lang="bash">sudo apt-get install poppler-data</pre></p>
+
+<p>如果还不行，那么试试这个：
+<pre lang="bash">sudo apt-get install cmap-adobe-cns1 cmap-adobe-gb1 gs-cjk-resource</pre></p>

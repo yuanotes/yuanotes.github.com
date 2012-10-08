@@ -1,0 +1,26 @@
+---
+layout: post
+title: 正则表达式如何避免贪婪匹配
+categories:
+- 编程
+tags:
+- python
+- 正则表达式
+published: true
+comments: true
+---
+<p>本来是因为兴趣而研究 <a href="http://www.douban.com/group/topic/21206826/">http://www.douban.com/group/topic/21206826/</a></p>
+
+<p>看到里面一个正则表达式，这个另我费解，自己也试了一下，发现我以前对<code> .*</code> 的匹配理解有误。</p>
+
+<p>先说明一下<code> .*?</code> 的作用。本来我也稀里糊涂，看过<a href="http://lordong.net/wp/post/1127.html">http://lordong.net/wp/post/1127.html</a> 才有所了解。</p>
+
+<p>既然那篇文章说的很清楚，我就不抄袭他的例子了，而且我自己也给不出一个更好的。</p>
+
+<p>说说我对 <code>.*?</code> 里面<code> .*</code> 的理解吧。</p>
+
+<p><code>.</code> 是表示任意字符的，那么<code> .* </code>就是任意字符任意多个。</p>
+
+<p>以前我错误的理解了<code> . </code> 的含义，我觉得<code>a.*b</code>可以匹配 <code>ab</code>也可以匹配<code>acccccccccccccb</code>，这是我的理解，只能匹配<strong>一个字符0次或者任意次</strong>，当我发现还可以匹配 <code>acdeerwb</code>的时候我就没弄清楚到底是怎么匹配的。这种稀里糊涂的精神最要不得。</p>
+
+<p>现在通过<code>.*</code>和<code>.*?</code>可以明白了，<code>.</code>是匹配任意字符没错，但是却不是一个固定不变的字符，<code>*</code>表示前面的元素是0个或者任意多个，那么 <code>.*?</code>就表示<code>?</code>前面的那个任意字符，只能出现一次或者0次，出现多次就不匹配，这就恰好是我们需要的避免贪婪匹配。</p>

@@ -1,0 +1,14 @@
+---
+layout: post
+title: gentoo 的 ibus-daemon的问题
+categories:
+- Linux
+tags:
+- gentoo
+published: true
+comments: true
+---
+<p>今天刚刚配置好gentoo的openbox，发现ibus-daemon出了问题，就是openbox退出的时候，ibus会没有关闭，不知道为什么…<br />
+导致的问题就是openbox再次运行的时候会没有ibus的系统托盘，可能出现的结果是接下来你得盲打。<br />
+去ibus的网站查了一下，发现很多用gentoo的都有这个问题。<br />
+其实，解决也挺简单的，就是这么启动ibus-daemon -r，这样新启动的就会取代原来没有关闭的，问题就解决了。</p>

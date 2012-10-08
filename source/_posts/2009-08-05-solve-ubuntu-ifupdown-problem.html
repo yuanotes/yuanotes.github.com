@@ -1,0 +1,27 @@
+---
+layout: post
+title: ubuntu ifupdown 问题解决
+categories:
+- Linux
+tags:
+- networkmanager
+- ubuntu
+published: true
+comments: true
+---
+<p>ubuntu 9.04 上的Network Manger 出现问题。本来我设置了一个ADSL， 开机自动连接的。后来出了点问题，每次开机都有一个Ifupdown(eth0)的连接，而且还不能修改。虽然我可以手动切换到ADSL，但是很麻烦。</p>
+
+<p>在网上找了很久，终于发现一个办法可行。</p>
+
+<p>首先备份一下interfaces文件</p>
+
+<p><pre lang="bash">
+cd /etc/network
+sudo cp interfaces interfaces~</pre></p>
+
+<p>修改interfaces，只留下两行。</p>
+
+<p><pre lang="text">auto lo
+iface lo inet loopback</pre></p>
+
+<p>重启。</p>

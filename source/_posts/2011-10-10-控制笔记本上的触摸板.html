@@ -1,0 +1,60 @@
+---
+layout: post
+title: 控制笔记本上的触摸板
+categories:
+- Linux
+tags:
+- ubuntu
+- 笔记本电脑
+- 脚本
+published: true
+comments: true
+---
+<p>以前见过同学用Dell的笔记本电脑，触摸板都没有开关控制，好像一些联想的电脑也是这样。我觉得这样的电脑根本就没法用，打字经常出现莫名的鼠标干扰。</p>
+
+<p>公司新发的Dell笔记本电脑，触摸板需要驱动来控制。Ubuntu下驱动可能出了问题，默认的按键应该是<code>Fn+F5</code>，但是按了之后却没有反映。</p>
+
+<p>在google中搜索之后，在askubuntu上找到了一个曲折的答案。</p>
+
+<p>为打开和关闭触摸板写一个脚本文件，然后通过快捷键绑定这个脚本文件，很明白了吧？</p>
+
+<p><strong>1. 找到你的触摸板的设备名称</strong>
+<pre lang="bash">xinput list</pre></p>
+
+<p>一般名称是包含<code>PS/2</code> 这种字符的，比如我的触摸板设备名称就是<code>ImPS/2 ALPS GlidePoint</code>。</p>
+
+<p><strong>2. 新建一个文件，随便叫什么名字，这个文件是一个shell脚本，可以执行的。</strong>
+内容如下：
+<pre lang="bash" /></p>
+
+<p>#!/bin/bash<br />
+enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.\+1$"`</p>
+
+<p>if [ -n "$enabled" ]; then<br />
+    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 0<br />
+else<br />
+    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 1<br />
+fi
+</p>
+
+<p>意思很清楚，就是通过<code>xinput</code>来判断触摸板设备是否开启，如果开启则给 <code>$enabled</code>赋一个值，否则该变量就是空。</p>
+
+<p>接下来的执行就是，如果触摸板打开了，那么就关掉，如果关掉了那么就打开。</p>
+
+<p><strong>3.绑定快捷键</strong>
+给这个脚本绑定一个快捷键。<br />
+这一步，就是设置快捷键绑定这个脚本了。我的笔记本就是绑定的<code>Fn+F5</code>哦。<br />
+在绑定之前，可以在命令行里尝试一下是否有用，确保了能够正常开关的话，就可以了。</p>
+
+<p><strong>4.如果上面都走不通的话，不妨尝试通过内核模块来控制。</strong>
+这里的<code>psmouse</code>就是触摸板的模块名称了。</p>
+
+<p>启动：
+<pre lang="bash">
+sudo modprobe psmouse
+</pre></p>
+
+<p>关闭：
+<pre lang="bash">
+sudo rmmod psmouse
+</pre></p>

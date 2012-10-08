@@ -1,0 +1,19 @@
+---
+layout: post
+title: firefox 删除的书签又还原？
+categories:
+- 软件
+tags:
+- firefox
+published: true
+comments: true
+---
+<p>我用<a href="http://www.foxmarks.com/" target="_blank">foxmarks</a>扩展来保持firefox的书签同步，有时候在学校的电脑上用firefox登陆时书签同步很方便。</p>
+
+<p>但是今天出现了一个奇怪的问题：我将wordpress的“快速发布”和gmail的<a href="http://mail.google.com/tasks/ig" target="_blank">task</a>放到书签工具栏，然后把firefox原来的书签删掉。重启后发现，我存下的两个书签不见了，书签栏还是原来自带的书签。</p>
+
+<p>刚开始我还以为是<a href="http://www.foxmarks.com/" target="_blank">foxmarks</a>的问题，后来发现，是firefox的问题。</p>
+
+<p>我猜，firefox会自动备份书签，当书签缺失的时候会将原来备份的书签还原，具体怎么回事我不是很清楚，但是，我修改后的书签工具栏比原来自带的书签工具栏的书签要少，可能是这样，firefox会自动还原吧……</p>
+
+<p>弄清楚这个了（算是弄清楚了吧），我就去配置文件夹下删掉bookmarkbackups这个文件夹。里面都是firefox自动备份的书签。删掉之后就不会有自动还原了。</p>

@@ -1,0 +1,19 @@
+---
+layout: post
+title: Django中model空值表示
+categories:
+- Django
+tags:
+- model
+- 数据库
+published: true
+comments: true
+---
+<p>在django的model.py中有个很奇怪的地方，那就是设置一个可以为空的值时，有一个blank=True为什么还需要一个null=True呢？</p>
+
+<p>官方文档这么解释这个问题：
+<ol>
+	<li>blank主要是用来验证的，也就是用作ModelForm的时候验证用户的输入，如果不是用户输入甚至可以免掉blank=True(我自己还没有验证，一般都加上)。</li>
+	<li>null主要是基于数据库层面的，也就是是否可以在数据库里面存储空值(NULL)。</li>
+	<li>另外，除了oracle的数据库之外，string的field如CharField和TextField存在数据库里的都是empty string，这是django为了给string的field寻求一个统一的空值。</li>
+</ol></p>

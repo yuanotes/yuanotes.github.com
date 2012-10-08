@@ -1,0 +1,22 @@
+---
+layout: post
+title: virtualbox 共享文件夹
+categories:
+- Linux
+tags: []
+published: true
+comments: true
+---
+<p>刚刚需要从虚拟机里的windows XP中拷点东西出来，发现共享文件夹没办法用。去网上搜了一下，看到了一篇指南，但是也没有用，于是看了下virtualbox的帮助文件，发现网上那个错了。</p>
+
+<p>当linux是主机，XP是虚拟的时候。<br />
+先在linux的virtualbox程序中设置sharedfolder，然后记下名字。<br />
+然后在XP中打开命令行，cmd，输入</p>
+
+<p><pre>net use x: \\vboxsrv\sharedfoldername</pre></p>
+
+<p>上面x:是你给的驱动器，26个字母中你随便给，最好是大写，比如我给的是Z:。当然不要和已有的相同。</p>
+
+<p>记得x:后面要空格。</p>
+
+<p>然后sharedfoldername就是之前设置所给的名字了。完了就能在XP的explorer中看到了。</p>

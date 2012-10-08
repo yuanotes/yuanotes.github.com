@@ -1,0 +1,47 @@
+---
+layout: post
+title: Django如何管理静态文件
+categories:
+- Django
+- 编程
+tags:
+- css
+published: true
+comments: true
+---
+<p>Django的template确实很强大，但是我们不可能把CSS文件也嵌入到template中。</p>
+
+<p>但是CSS又不能简单的放在template目录下让template调用，因为django的目录结构是由urls.py这个文件来指定的，凡是没有指定的路径，外界都不能访问。</p>
+
+<p>所以，最好的办法，是指定一个目录，该目录下所有的文件都能够被匿名用户访问。</p>
+
+<p>虽然django的官方文档很详细，但是，一般人还是很难看懂其中staticfiles app到底是在扯什么东西。</p>
+
+<p>好在django默认建立的project的settings.py文件中有MEDIA_ROOT，MEDIA_URL等选项。去网上搜索了一把，找到了<a href="http://twigstechtips.blogspot.com/2009/08/django-how-to-serve-media-files-css.html">一篇文章</a>（墙外），差不多可以解决这个问题。虽然，貌似没有staticfiles神马的用起来方便。</p>
+
+<p>首先，在settings.py文件中定义（以下代码都是写文章时候手打的，如有错误请留言指正）
+<pre lang="python">
+MEDIA_ROOT=os.path.join(os.path.dirname(__file__),'media').replace('\\','/') #如果是*nix系统，不需要replace函数
+MEDIA_URL='/media/' #末尾一定要加上/
+ADMIN_MEDIA_PREFIX = '/media/admin/' #填啥都可以，就是不能跟MEDIA_URL一样
+</pre></p>
+
+<p>然后，在urls.py文件中：
+<pre lang="python">
+from django.views.static import * 
+from django.conf import settings</pre></p>
+
+<p>#...<br />
+#以下是urlpatterns中的<br />
+(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+</path></p>
+
+<p>做完这些之后，测试一下 yourdomain.com/media/default.css<br />
+仅仅输入 yourdomain.com/media/ 是看不到任何东西的。</p>
+
+<p>最后，如果没有什么问题，那么，在template的html文件中，可以直接这么调用css以及image等文件啦，
+<pre lang="html">
+<link rel="stylesheet" type="text/css" href="/media/css/default.css" />
+</pre></p>
+
+<p></p>

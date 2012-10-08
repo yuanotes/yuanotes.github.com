@@ -1,0 +1,68 @@
+---
+layout: post
+title: VC++ 6 程序转 VS2008 的错误
+categories:
+- 编程
+tags: []
+published: true
+comments: true
+---
+<p>前一阵子在学校的博士生那里得来一个程序，是关于一个神经网络论文的实验的程序。由于那篇论文发的比较早，而现在我们现在的论文是基于那篇论文的，我们必须要重复他们的一些实验来保证那篇论文的数据的正确性。</p>
+
+<p>程序是用的vc++ 6 的MFC 写的，其实最大的功能就是通过神经网络的一些算法对一些数据进行分析然后分类，也就是模式分类了。这些功能用MFC有点大材小用了，用命令行就可以了。当然这个程序也很有意思，通过MFC的消息映射来读取数据然后输出数据，但是消息映射用的是菜单上的按钮……</p>
+
+<p>程序太老了，要用vs2008来跑，所以就要进行转换了。转换的问题不是很大，就是不明白MS哪来那么多的规矩，一套一套的，偏偏没事就更新换代。有关MFC的代码不是问题，但是有一点其它的问题。</p>
+
+<p>首先是 include 问题，vs2008 对于 iostream 和 fstream 是不需要.h的后缀的，而且这些都在标准库中，因此需要用到std的命名空间，必须加上 using namespace std;（看情况而定了，有时候只加 std:: 更省事）</p>
+
+<p>然后是 for 语句问题。现在的标准是 for 语句里面申明的变量在循环完之后就没有了，但是在vc6++里面是仍然存在的。</p>
+
+<p>最后的问题就是比较让人纠结的了，执行出现类似如下错误：</p>
+
+<p><pre lang="text">
+Error  179  error C2248: std::basic_ios _Elem,_Traits::basic_ios : cannot access private member declared in class std::basic_ios _Elem,_Traits c:\program files\microsoft visual studio 8\vc\include\fstream 802
+</pre>
+这个问题在MSDN上有人提出，但是没人给出答案。我查到了CSDN上，发现也有人出现类似错误，贴下他的出错的代码。</p>
+
+<p><pre lang="cpp" line="1">
+#include <iostream>
+#include <fstream>
+int main(int argc, char* argv[])
+{
+    using namespace std;</fstream></iostream></pre></p>
+
+<p>    ( argc > 2<br />
+        ? ofstream(argv[2],ios::out|ios::binary)<br />
+        :cout<br />
+       ) <<<br />
+        ( argc >  1<br />
+        ? ifstream(argv[1],ios::in|ios::binary)<br />
+        :cin<br />
+        ).rdbuf() ;</p>
+
+<p>    return 0;<br />
+}
+</p>
+
+<p>CSDN上没人给出好的答案，后来他自己结贴了并给出了修改后的代码。
+<pre lang="cpp" line="1">
+#include <iostream>
+#include <fstream>
+int main(int argc, char* argv[])
+{
+    using namespace std;
+    (*( argc > 2
+        ? &ofstream(argv[2],ios::out|ios::binary)
+        :&cout
+        )) <<</fstream></iostream></pre></p>
+
+<p>        (*( argc >  1<br />
+        ? &ifstream(argv[1],ios::in|ios::binary)<br />
+        :&cin<br />
+        )).rdbuf() ;<br />
+    return 0;<br />
+}
+
+从这里面什么也看不出来，但是总还是有一点端倪的。接下来在另一个论坛找到了相关问题的解决办法。有人回帖说这个问题可能是将一个fstream对象赋值给了另一个对象。里面也有人提到，是不是函数的形参不是通过引用传递的，这样也能出现这样的错误。</p>
+
+<p>因此，我将所有的函数的形参都改过来了，最后发现，大功告成，除了一些警告之外，没有错误了。</p>

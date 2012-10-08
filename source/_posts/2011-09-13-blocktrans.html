@@ -1,0 +1,29 @@
+---
+layout: post
+title: Django的blocktrans语法
+categories:
+- Django
+tags:
+- 版本兼容
+published: true
+comments: true
+---
+<p>官方文档的blocktrans的的标签在django1.2.5和1.3中不一太一样。</p>
+
+<p>blocktrans的标签中中不支持访问变量名的属性以及list或者dict的成员，也就是user.email这种写法是不允许的。</p>
+
+<p>文档中实例代码是这样的，这种在1.2.5中不支持，但是在1.3中是支持的：
+<pre lang="html">
+{% blocktrans with amount=article.price count years=i.length %}
+...
+{% endblocktrans %}
+</pre></p>
+
+<p>在1.2.5中必须用老的语法：
+<pre lang="html">
+{% blocktrans with article.price as amount count i.length as year %}
+..
+{% endblocktrans %}
+</pre></p>
+
+<p>另外，老的语法中,with A as B [and C as D] 中的 and 不能跟count写在一起。可以理解为count和with是两个单独的函数，只能并列放着，我没有看源代码，只是个人理解。新版本的新语法比较简洁，如果没有必要一定要守着1.2.5的话，升到1.3还是不错的。</p>
