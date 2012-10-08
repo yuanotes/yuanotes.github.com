@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 软件 | 谋定而后动]]></title>
+  <link href="http://yuanotes.github.com/blog/categories/软件/atom.xml" rel="self"/>
+  <link href="http://yuanotes.github.com/"/>
+  <updated>2012-10-09T04:03:20+08:00</updated>
+  <id>http://yuanotes.github.com/</id>
+  <author>
+    <name><![CDATA[Brooklyn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[evince显示中文pdf乱码]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/10/03/evince%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87pdf%E4%B9%B1%E7%A0%81/"/>
+    <updated>2010-10-03T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/10/03/evince显示中文pdf乱码</id>
+    <content type="html"><![CDATA[<p>在gnome里面，evince算是比较小巧的pdf阅读器了，相比于adobe reader以及xpdf这些臃肿又不美观的东西。</p>
+
+
+
+
+<p>但是evince显示某些pdf的时候，中文是乱码或者干脆什么都没有，有个很简单的办法解决这个问题，安装poppler-data就可以了。</p>
+
+
+
+
+<p>Ubuntu直接运行：
+<pre lang="bash">sudo apt-get install poppler-data</pre></p>
+
+
+
+
+<p>如果还不行，那么试试这个：
+<pre lang="bash">sudo apt-get install cmap-adobe-cns1 cmap-adobe-gb1 gs-cjk-resource</pre></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[freeciv声音文件]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/08/04/freeciv%E5%A3%B0%E9%9F%B3%E6%96%87%E4%BB%B6/"/>
+    <updated>2010-08-04T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/08/04/freeciv声音文件</id>
+    <content type="html"><![CDATA[<p>freeciv的音效文件不是随着程序一起的。如果从命令行运行civ，会有提示，让玩家到<a href="http://download.gna.org/freeciv/contrib/audio/">http://download.gna.org/freeciv/contrib/audio/</a>这个地址下载声音文件。</p>
+
+
+
+
+<p>音效文件就是那个stdounds3.tar.gz。解压它然后发现一个data文件夹，把其中的stdsounds文件夹和stdsounds.soundspec文件放到/usr/share/games/freeciv文件夹下，这样玩游戏就有音效了。</p>
+
+
+
+
+<p>至于背景音乐，也在上面那个地址下载，不过暂时没有找到让游戏播放背景音乐的方法。倒是在某个论坛上看到，要听背景音乐，打开一个音乐播放器，一边玩一边放就可以了。囧。</p>
+
+
+
+
+<p>不过，feeciv这个游戏确实很有意思。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[linux下ssh+expect]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/06/09/linux%E4%B8%8Bsshexpect/"/>
+    <updated>2010-06-09T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/06/09/linux下sshexpect</id>
+    <content type="html"><![CDATA[<p>怎么在linux下弄ssh翻墙一般人应该都知道了，不过这么做有两个很不方便的地方。</p>
+
+
+
+
+<p>一个是每次登陆需要输入密码，一个是它会自动掉线。</p>
+
+
+
+
+<p>以前我弄了个ssh密钥啥来着，就是每次登陆不需要输入密码，总之非常麻烦。但是那样做还是会掉线。</p>
+
+
+
+
+<p>今天在网上无意中看到了<a href="http://blog.zhuli.name/archives/6644" target="_blank">expect</a>这个东西，真是很好很强大，一次性解决了这两个问题。</p>
+
+
+
+
+<p>下载expect很简单，ubuntu只需要
+<pre lang="bash">sudo apt-get install expect</pre>
+就可以了。</p>
+
+
+
+
+<p>然后就是编写expect脚本，其实也就是一个sh脚本。运行这个脚本就可以开始翻出去了。</p>
+
+
+
+
+<p>具体的脚本可以<a href="http://blog.zhuli.name/archives/6644" target="_blank">看这里</a>，我就不掠美了。</p>
+
+
+
+
+<p>PS：这个玩意儿好像需要终端。还有，如果ssh端口比较特殊，可以加 -p 参数。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用snippy代替scrapbook]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/04/25/%E7%94%A8snippy%E4%BB%A3%E6%9B%BFscrapbook/"/>
+    <updated>2010-04-25T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/04/25/用snippy代替scrapbook</id>
+    <content type="html"><![CDATA[<p>firefox下有些很好用的插件，scrapbook就是其中之一，这个插件可以帮助用户抓取网页上的元素，存储在本地，供用户以后进行查看或者编辑。</p>
+
+
+
+
+<p>chrome出来以后，插件不如firefox是个最大的缺陷，不过我在网上发现一个chrome的插件，<a href="https://chrome.google.com/extensions/detail/maabelkjnhafpphacjecmcnkkmjndjgl" target="_blank">snippy</a>，和scrapbook的功能差不多，比scrapbook出色的是，这个插件可以将用户抓取的网页保存到<a href="http://snipbin.appspot.com" target="_blank">SnipBin</a>或者 <a href="http://docs.google.com" target="_blank">Google Docs</a> 中，缺点是我还没有发现保存到本地的选项，不过保存到<a href="http://docs.google.com" target="_blank">Google Docs</a> 也是个不错的选择，<a href="http://snipbin.appspot.com" target="_blank">SnipBin</a>就有点不靠谱了。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[试用vimwiki]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/04/23/%E8%AF%95%E7%94%A8vimwiki/"/>
+    <updated>2010-04-23T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/04/23/试用vimwiki</id>
+    <content type="html"><![CDATA[<p>试了很多个人知识管理工具，发现wiki的形式是最好的，这个是没得说的。还有几个条件是必须的：
+<ol>
+    <li>在线的平台是比较好的，因为我需要在很多地方、不同的操作系统登陆wiki。</li>
+    <li>有本地的平台是比较方便的，这样当我不能上网或者上网受到限制的时候我还是能够编辑wiki。</li>
+    <li>免费的。收费的不够钱买，破解的用着不舒服。</li>
+    <li>不大也不小。像wikimedia那种太大了，个人用起来比较费劲；像tiddlywiki太小了，单文件也不够靠谱。</li>
+    <li>编辑比较方便。</li>
+</ol>
+发现了几款软件符合我的要求:
+<ol>
+    <li>首先是moinmoin，本地编辑十分好用，但是发现部署在线版本的代价比较大，因为其代码是python。python的空间对我来说，还是贵了一点点。</li>
+    <li>其次是dokuwiki，本地搭建比较方便，在线的也很实惠。不过发现本地和在线的进行同步是个问题，还有就是搭建php平台也是挺费力的。</li>
+    <li>然后是emacs的muse。这个，没办法，其实学习emacs的使用也是有曲线的……而且我喜欢vim的速度。</li>
+    <li>最后就是vimwiki了，优点是我会用vim，编辑文本太舒服了，速度快，文本格式的wiki文件和html格式的文件无论是在线还是本地都不是问题；缺点就是对于多媒体不能很好的支持，貌似还不支持文字下滑线的样式，不过对我来说，其缺点可以无视掉。</li>
+</ol></p>
+
+]]></content>
+  </entry>
+  
+</feed>

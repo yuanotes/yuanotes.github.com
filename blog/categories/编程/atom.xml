@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 编程 | 谋定而后动]]></title>
+  <link href="http://yuanotes.github.com/blog/categories/编程/atom.xml" rel="self"/>
+  <link href="http://yuanotes.github.com/"/>
+  <updated>2012-10-09T04:03:20+08:00</updated>
+  <id>http://yuanotes.github.com/</id>
+  <author>
+    <name><![CDATA[Brooklyn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[正则表达式如何避免贪婪匹配]]></title>
+    <link href="http://yuanotes.github.com/blog/2011/09/15/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84-%E5%8F%96%E4%BB%A3%E8%B4%AA%E5%A9%AA%E5%8C%B9%E9%85%8D/"/>
+    <updated>2011-09-15T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2011/09/15/正则表达式的-取代贪婪匹配</id>
+    <content type="html"><![CDATA[<p>本来是因为兴趣而研究 <a href="http://www.douban.com/group/topic/21206826/">http://www.douban.com/group/topic/21206826/</a></p>
+
+
+
+
+<p>看到里面一个正则表达式，这个另我费解，自己也试了一下，发现我以前对<code> .*</code> 的匹配理解有误。</p>
+
+
+
+
+<p>先说明一下<code> .*?</code> 的作用。本来我也稀里糊涂，看过<a href="http://lordong.net/wp/post/1127.html">http://lordong.net/wp/post/1127.html</a> 才有所了解。</p>
+
+
+
+
+<p>既然那篇文章说的很清楚，我就不抄袭他的例子了，而且我自己也给不出一个更好的。</p>
+
+
+
+
+<p>说说我对 <code>.*?</code> 里面<code> .*</code> 的理解吧。</p>
+
+
+
+
+<p><code>.</code> 是表示任意字符的，那么<code> .* </code>就是任意字符任意多个。</p>
+
+
+
+
+<p>以前我错误的理解了<code> . </code> 的含义，我觉得<code>a.*b</code>可以匹配 <code>ab</code>也可以匹配<code>acccccccccccccb</code>，这是我的理解，只能匹配<strong>一个字符0次或者任意次</strong>，当我发现还可以匹配 <code>acdeerwb</code>的时候我就没弄清楚到底是怎么匹配的。这种稀里糊涂的精神最要不得。</p>
+
+
+
+
+<p>现在通过<code>.*</code>和<code>.*?</code>可以明白了，<code>.</code>是匹配任意字符没错，但是却不是一个固定不变的字符，<code>*</code>表示前面的元素是0个或者任意多个，那么 <code>.*?</code>就表示<code>?</code>前面的那个任意字符，只能出现一次或者0次，出现多次就不匹配，这就恰好是我们需要的避免贪婪匹配。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Django如何管理静态文件]]></title>
+    <link href="http://yuanotes.github.com/blog/2011/03/28/django%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86css%E7%AD%89%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/"/>
+    <updated>2011-03-28T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2011/03/28/django如何管理css等静态文件</id>
+    <content type="html"><![CDATA[<p>Django的template确实很强大，但是我们不可能把CSS文件也嵌入到template中。</p>
+
+
+
+
+<p>但是CSS又不能简单的放在template目录下让template调用，因为django的目录结构是由urls.py这个文件来指定的，凡是没有指定的路径，外界都不能访问。</p>
+
+
+
+
+<p>所以，最好的办法，是指定一个目录，该目录下所有的文件都能够被匿名用户访问。</p>
+
+
+
+
+<p>虽然django的官方文档很详细，但是，一般人还是很难看懂其中staticfiles app到底是在扯什么东西。</p>
+
+
+
+
+<p>好在django默认建立的project的settings.py文件中有MEDIA_ROOT，MEDIA_URL等选项。去网上搜索了一把，找到了<a href="http://twigstechtips.blogspot.com/2009/08/django-how-to-serve-media-files-css.html">一篇文章</a>（墙外），差不多可以解决这个问题。虽然，貌似没有staticfiles神马的用起来方便。</p>
+
+
+
+
+<p>首先，在settings.py文件中定义（以下代码都是写文章时候手打的，如有错误请留言指正）
+<pre lang="python">
+MEDIA_ROOT=os.path.join(os.path.dirname(__file__),'media').replace('\\','/') #如果是*nix系统，不需要replace函数
+MEDIA_URL='/media/' #末尾一定要加上/
+ADMIN_MEDIA_PREFIX = '/media/admin/' #填啥都可以，就是不能跟MEDIA_URL一样
+</pre></p>
+
+
+
+
+<p>然后，在urls.py文件中：
+<pre lang="python">
+from django.views.static import * 
+from django.conf import settings</pre></p>
+
+
+
+
+<p>#...<br />
+#以下是urlpatterns中的<br />
+(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+</path></p>
+
+
+
+
+<p>做完这些之后，测试一下 yourdomain.com/media/default.css<br />
+仅仅输入 yourdomain.com/media/ 是看不到任何东西的。</p>
+
+
+
+
+<p>最后，如果没有什么问题，那么，在template的html文件中，可以直接这么调用css以及image等文件啦，
+<pre lang="html">
+<link rel="stylesheet" type="text/css" href="http://yuanotes.github.com/media/css/default.css" />
+</pre></p>
+
+
+
+
+<p></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[批量转换ppt为pdf文件]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/11/18/%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2ppt%E4%B8%BApdf%E6%96%87%E4%BB%B6/"/>
+    <updated>2010-11-18T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/11/18/批量转换ppt为pdf文件</id>
+    <content type="html"><![CDATA[<p>学校老师给的讲义一般都是ppt的讲义文件，这个在电脑上看起来并不如pdf方便，在网上搜到一个办法批量转换ppt为pdf文件。</p>
+
+
+
+
+<p>很多类似的服务都是收费的，不过这个是免费的，而且能满足cli一票人的欲望。</p>
+
+
+
+
+<p>要用到的工具首先是openoffice，这个是必须的。</p>
+
+
+
+
+<p>其它的辅助工具在这里下载 http://www.artofsolving.com/opensource 。其中的JODConverter是Java封装的工具包，可以用于网络服务器或者其它形式的用途，PyODConverter就是一个Python文件了，这个适合通过命令行来进行批处理的人。</p>
+
+
+
+
+<p>下面的方法主要用于装有openoffice的Linux平台下。Windows也是可以的，方法在上面那个网站上有说明。<br />
+首先，让openoffice运行成一个后台服务器，监听一个socket。
+<pre lang="bash">
+soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard
+</pre></p>
+
+
+
+
+<p>假设下载的是DocumentConverter.py，编辑这个文件，在最开始插入一行注释：
+<pre lang="bash">
+#!/usr/bin/env python
+</pre>
+然后让其可运行
+<pre lang="bash">
+chmod +x DocumentConverter.py
+</pre></p>
+
+
+
+
+<p>现在可以开始进行批处理了。假设cd到一个有ppt的目录下，运行以下命令进行处理：
+<pre lang="bash">
+for i in `ls *.ppt` ;do DocumentConverter.py $i `echo $i | sed 's/.ppt/.pdf/'`  ; done;
+</pre></p>
+
+
+
+
+<p>Ubuntu完美运行。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[破解碰到的两两异或问题]]></title>
+    <link href="http://yuanotes.github.com/blog/2009/07/06/xor-problem/"/>
+    <updated>2009-07-06T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2009/07/06/xor-problem</id>
+    <content type="html"><![CDATA[<p>昨晚，不想睡觉，就在电脑上随便逛逛。</p>
+
+
+
+
+<p>以前在看雪论坛（很好的论坛）下载过一堆玩意儿，有教程也有工具。那个时候，不知道自己是太浮躁了还是怎么的，没怎么用心研究。</p>
+
+
+
+
+<p>昨晚就认认真真研究了直到早上4点，事实上我这几天都是这么晚睡的。</p>
+
+
+
+
+<p>我开始看一点破解教程，然后试着破解教程里的几个样例程序。前面几个很简单，后面居然碰到一个让我没法下手的，我就去睡了。</p>
+
+
+
+
+<p>今天早上起来继续，发现，原来这个玩意儿挺简单的。</p>
+
+
+
+
+<p>首先，破解之后发现，程序是需要输入一个8位的序列号，这个序列号跟0x32（50）异或后得到一个新的序列号，然后这个新的8位的序列号两两异或得到4位的，4位的两两异或得到2位数，然后再异或得到一个数放在al寄存器里。暂时把这个数命名为al吧。然后将al与那个新的8位序列号异或之后得到一个最终8位序列号，最后将这个最终的结果与程序里存储的8位标准序列号相比较，相同则破解成功，否则序列号不正确。</p>
+
+
+
+
+<p>当然，破解不是我的目的，写个算法给算出来才过瘾。</p>
+
+
+
+
+<p>以python为准的。首先定义一个8位列表，s[0]...s[7] 存储输入的序列号。然后定义一个程序里原来的 8位标准序列号，o[0]...o[7]，然后：<br />
+s[0] s[1] s[2] s[3] s[4] s[5] s[6] s[7]   ^0x32 得到<br />
+n[0] n[1] n[2] n[3] n[4] n[5] n[6] n[7]  两两异或得到（第一个和第二异或，第三个和第四个异或，类推）<br />
+mid1[0] mid1[1] mid1[2] mid1[3] 再两两异或得到<br />
+mid2[0] mid2[1] 再两两异或得到<br />
+al 然后 将al 与 n[0]..n[7] 8个异或就得到最终的序列号。<br />
+当然这8个要跟 程序里定义好的8个o[0]...o[7]相同，这样就算序列号正确了。<br />
+这样看来，就是根据程序里的8个标准的序列号反推就能得到输入的序列号了。那怎么反推呢？<br />
+这个问题让我纠结了好久，最后，还是找到了规律。规律最后再说。首先给出自己写的算法，python版的。
+<pre lang="python" line="1"># -*- coding:utf-8 -*-
+#反汇编时得到的标准序列号
+o=[0x71,0x18,0x59,0x1b,0x79,0x42,0x45,0x4c]
+#求al,过程很有趣
+al=0
+for i in o:
+    al^=i
+#初始化输入所需的序列号，并求之
+s=[0]*8
+for i in range(8):
+    s[i]=al^o[i]^0x32
+    print chr(s[i])</pre></p>
+
+
+
+
+<p>接下来是C语言版的程序，来自看雪论坛，源地址。</p>
+
+
+
+
+<p>虽然我的得出的结论与此无关，但是还是给了我灵感的。</p>
+
+
+
+
+<p>首先楼主给了一个他找来的代码，他说不懂其中的原理。很囧，其实看他接下来的程序，如果他分析一下就知道了，不过他没有。</p>
+
+
+
+
+<p>首先是他找来的代码。注意，虽然代码不同，但是，<font color="red">这篇文章里所有的代码都是一个原理</font>，最后我会说明。
+<pre lang="c" line="1">#include <stdio.h>
+void main()
+{
+ char middle_1[4];
+ char middle_2[2];
+ char b[8]={0x71,0x18,0x59,0x1B,0x79,0x42,0x45,0x4C} ;
+ middle_1[0]=b[0]^b[1];
+ middle_1[1]=b[2]^b[3];
+ middle_1[2]=b[4]^b[5];
+ middle_1[3]=b[6]^b[7];
+ cout<<middle_1[0]<<middle_1[1]<<middle_1[2]<<middle_1[3]<<endl;
+ middle_2[0]=middle_1[0]^middle_1[1];
+ middle_2[1]=middle_1[2]^middle_1[3];
+ char al=middle_2[0]^middle_2[1];
+ cout<<al<<endl;
+ for(int i=0;i<=8;i++)
+ {
+  b[i]=b[i]^al;
+  b[i]=b[i]^0x32;
+  cout<<b[i]<<' ';
+ }
+}</stdio.h></pre></p>
+
+<p>这个是正确的代码，但是还是没有我的那个简便。其实我那个python版的跟这个是一个原理。这个代码几乎和加密是反过来的，把程序里的标准8位序列两两异或，再运算，然后得到了al，最后通过al得到需要输入的8位序列；而我的是将标准8位序列全异或一遍，然后得到al。得到al了就能解决其他的问题了。</p>
+
+<p>原理就在这里。这里面有个巧妙的地方，那就是<font color="red">异或的运算法则有交换律，分配律，和结合律</font>。其中分配律和普通运算有点不同，要注意一下。但是只要交换律和结合律就能搞定了。</p>
+
+<p>首先，假设输入的序列号是正确的。那么我们得到最终序列号就会跟程序里的标准的一样了。那就假设我们得到的最终序列号就是o[0]...o[7]。</p>
+
+<p>那o[0]...o[7]这8个是怎么得到的呢，前面讲了是 al 与 n[0]...n[7]异或得到的。得到式子：<br />
+n[0]^al=o[0]<br />
+n[1]^al=o[1]<br />
+...<br />
+n[7]^al=o[7]</p>
+
+<p>不难发现规律 o[0]^o[1] =(n[0] ^al)^(n[1]^al)，根据结合律，o[0]^o[1] =n[0]^n[1]。哈哈，规律发现了，能得到 o[0]^o[1]^...o[7]=n[0]^n[1]...n[7]。</p>
+
+<p>那怎么得到al呢，这就好办了，知道了结合律，那8个两两异或最后得到一个，还不是等价于8个相互异或得到一个么？</p>
+
+<p>从这里可以看出，我的python版的程序和C语言版的是一个原理。</p>
+
+<p>不过还有一种算法。这得追溯到看雪论坛的那位老大了，很有意思的人。他知道了异或的运算法则，但是走了弯路，居然在反推的时候，将8位输入序列和al设成9个未知数，而此时又有9个方程，那他就能推出这9个未知数了。虽然这个方法很笨，但是，我当时一筹莫展的时候可想不到这样的方法。所以，对于这位老大的研究精神我还是有点佩服的。贴出他最后的得出的程序，跟上面两个原理一样。再贴一下他的网址吧，<a href="http://bbs.pediy.com//showthread.php?t=66222&referrerid=207614">http://bbs.pediy.com//showthread.php?t=66222&referrerid=207614</a>那里有很有意思的推导过程。
+<pre lang="c" line="1">#include <stdio.h>
+#include <conio.h>
+void main()
+{
+    int i;
+    char c[8]={0x71,0x18,0x59,0x1B,0x79,0x42,0x45,0x4C};
+    char a[8];
+    char b=0;
+    for(i=0;i<8;i++)
+        b^=c[i];
+    for(i=0;i<8;i++)
+        {
+            a[i]=c[i]^b^0x32;
+        printf("%c",a[i]);
+    }
+    getch();
+}</conio.h></stdio.h></pre></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[VC++ 6 程序转 VS2008 的错误]]></title>
+    <link href="http://yuanotes.github.com/blog/2009/07/04/vc6tovs2008/"/>
+    <updated>2009-07-04T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2009/07/04/vc6tovs2008</id>
+    <content type="html"><![CDATA[<p>前一阵子在学校的博士生那里得来一个程序，是关于一个神经网络论文的实验的程序。由于那篇论文发的比较早，而现在我们现在的论文是基于那篇论文的，我们必须要重复他们的一些实验来保证那篇论文的数据的正确性。</p>
+
+
+
+
+<p>程序是用的vc++ 6 的MFC 写的，其实最大的功能就是通过神经网络的一些算法对一些数据进行分析然后分类，也就是模式分类了。这些功能用MFC有点大材小用了，用命令行就可以了。当然这个程序也很有意思，通过MFC的消息映射来读取数据然后输出数据，但是消息映射用的是菜单上的按钮……</p>
+
+
+
+
+<p>程序太老了，要用vs2008来跑，所以就要进行转换了。转换的问题不是很大，就是不明白MS哪来那么多的规矩，一套一套的，偏偏没事就更新换代。有关MFC的代码不是问题，但是有一点其它的问题。</p>
+
+
+
+
+<p>首先是 include 问题，vs2008 对于 iostream 和 fstream 是不需要.h的后缀的，而且这些都在标准库中，因此需要用到std的命名空间，必须加上 using namespace std;（看情况而定了，有时候只加 std:: 更省事）</p>
+
+
+
+
+<p>然后是 for 语句问题。现在的标准是 for 语句里面申明的变量在循环完之后就没有了，但是在vc6++里面是仍然存在的。</p>
+
+
+
+
+<p>最后的问题就是比较让人纠结的了，执行出现类似如下错误：</p>
+
+
+
+
+<p><pre lang="text">
+Error  179  error C2248: std::basic_ios _Elem,_Traits::basic_ios : cannot access private member declared in class std::basic_ios _Elem,_Traits c:\program files\microsoft visual studio 8\vc\include\fstream 802
+</pre>
+这个问题在MSDN上有人提出，但是没人给出答案。我查到了CSDN上，发现也有人出现类似错误，贴下他的出错的代码。</p>
+
+
+
+
+<p><pre lang="cpp" line="1">
+#include <iostream>
+#include <fstream>
+int main(int argc, char* argv[])
+{
+    using namespace std;</fstream></iostream></pre></p>
+
+
+
+
+<p>    ( argc > 2<br />
+        ? ofstream(argv[2],ios::out|ios::binary)<br />
+        :cout<br />
+       ) <<<br />
+        ( argc >  1<br />
+        ? ifstream(argv[1],ios::in|ios::binary)<br />
+        :cin<br />
+        ).rdbuf() ;</p>
+
+<p>    return 0;<br />
+}
+</p>
+
+<p>CSDN上没人给出好的答案，后来他自己结贴了并给出了修改后的代码。
+<pre lang="cpp" line="1">
+#include <iostream>
+#include <fstream>
+int main(int argc, char* argv[])
+{
+    using namespace std;
+    (*( argc > 2
+        ? &ofstream(argv[2],ios::out|ios::binary)
+        :&cout
+        )) <<</fstream></iostream></pre></p>
+
+<p>        (*( argc >  1<br />
+        ? &ifstream(argv[1],ios::in|ios::binary)<br />
+        :&cin<br />
+        )).rdbuf() ;<br />
+    return 0;<br />
+}
+
+从这里面什么也看不出来，但是总还是有一点端倪的。接下来在另一个论坛找到了相关问题的解决办法。有人回帖说这个问题可能是将一个fstream对象赋值给了另一个对象。里面也有人提到，是不是函数的形参不是通过引用传递的，这样也能出现这样的错误。</p>
+
+<p>因此，我将所有的函数的形参都改过来了，最后发现，大功告成，除了一些警告之外，没有错误了。</p>
+
+]]></content>
+  </entry>
+  
+</feed>

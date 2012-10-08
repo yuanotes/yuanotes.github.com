@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | 谋定而后动]]></title>
+  <link href="http://yuanotes.github.com/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://yuanotes.github.com/"/>
+  <updated>2012-10-09T04:03:20+08:00</updated>
+  <id>http://yuanotes.github.com/</id>
+  <author>
+    <name><![CDATA[Brooklyn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[控制笔记本上的触摸板]]></title>
+    <link href="http://yuanotes.github.com/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/"/>
+    <updated>2011-10-10T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2011/10/10/控制笔记本上的触摸板</id>
+    <content type="html"><![CDATA[<p>以前见过同学用Dell的笔记本电脑，触摸板都没有开关控制，好像一些联想的电脑也是这样。我觉得这样的电脑根本就没法用，打字经常出现莫名的鼠标干扰。</p>
+
+
+
+
+<p>公司新发的Dell笔记本电脑，触摸板需要驱动来控制。Ubuntu下驱动可能出了问题，默认的按键应该是<code>Fn+F5</code>，但是按了之后却没有反映。</p>
+
+
+
+
+<p>在google中搜索之后，在askubuntu上找到了一个曲折的答案。</p>
+
+
+
+
+<p>为打开和关闭触摸板写一个脚本文件，然后通过快捷键绑定这个脚本文件，很明白了吧？</p>
+
+
+
+
+<p><strong>1. 找到你的触摸板的设备名称</strong>
+<pre lang="bash">xinput list</pre></p>
+
+
+
+
+<p>一般名称是包含<code>PS/2</code> 这种字符的，比如我的触摸板设备名称就是<code>ImPS/2 ALPS GlidePoint</code>。</p>
+
+
+
+
+<p><strong>2. 新建一个文件，随便叫什么名字，这个文件是一个shell脚本，可以执行的。</strong>
+内容如下：
+<pre lang="bash" /></p>
+
+
+
+
+<p>#!/bin/bash<br />
+enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.\+1$"`</p>
+
+
+
+
+<p>if [ -n "$enabled" ]; then<br />
+    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 0<br />
+else<br />
+    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 1<br />
+fi
+</p>
+
+
+
+
+<p>意思很清楚，就是通过<code>xinput</code>来判断触摸板设备是否开启，如果开启则给 <code>$enabled</code>赋一个值，否则该变量就是空。</p>
+
+
+
+
+<p>接下来的执行就是，如果触摸板打开了，那么就关掉，如果关掉了那么就打开。</p>
+
+
+
+
+<p><strong>3.绑定快捷键</strong>
+给这个脚本绑定一个快捷键。<br />
+这一步，就是设置快捷键绑定这个脚本了。我的笔记本就是绑定的<code>Fn+F5</code>哦。<br />
+在绑定之前，可以在命令行里尝试一下是否有用，确保了能够正常开关的话，就可以了。</p>
+
+
+
+
+<p><strong>4.如果上面都走不通的话，不妨尝试通过内核模块来控制。</strong>
+这里的<code>psmouse</code>就是触摸板的模块名称了。</p>
+
+
+
+
+<p>启动：
+<pre lang="bash">
+sudo modprobe psmouse
+</pre></p>
+
+
+
+
+<p>关闭：
+<pre lang="bash">
+sudo rmmod psmouse
+</pre></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[做事要有目的]]></title>
+    <link href="http://yuanotes.github.com/blog/2011/01/22/%E5%81%9A%E4%BA%8B%E8%A6%81%E6%9C%89%E7%9B%AE%E7%9A%84/"/>
+    <updated>2011-01-22T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2011/01/22/做事要有目的</id>
+    <content type="html"><![CDATA[<p>做事情，有目标。这是一个再简单不过的道理了，但是，却一直被我忽略。</p>
+
+
+
+
+<p>以前的我，不太懂事。那个时候上网，逛论坛，受了很不好的影响。那时候的我励志成为一名Geek，甚至是Nerd，因为这样才厉害，才受人尊敬。但是这么多年来了，我还是没感觉自己多么“厉害”。忘了从哪里看到的一句话，人总是幻想别人很在乎自己的行业，在乎自己的所作所为。其实别人根本不在乎，甚至不在乎你这个人。</p>
+
+
+
+
+<p>撇开这个不谈。我这人，从小就没个好习惯，当然也不能把责任全部推到社会和父母身上。我做事情，总是容易受干扰，容易转牛角尖。比如，我开一个博客，弄一个独立的Wordpress还不够，我还想自己在GAE写一个（觉得micolog不太给力）。不过那个写到一半，因为某些事情，代码都丢了。可是，我反过来一想，我弄一个博客是为了什么？</p>
+
+
+
+
+<p>我开一个博客，是为了写东西。把自己学习的心得以及成长的体会写下来，与别人分享。以前还会学某些人逞强，说自己写博客是给自己看的，无所谓访问量。但是现在我不得不承认，其实，写东西不想给别人看，完全可以自己写在本子上。如果怕保存不下来，可以用Nevernote保存在网上。但是，如果仅仅是为了写文字与人分享，是不需要开一个独立的博客的。</p>
+
+
+
+
+<p>一般的独立博客都是专题博客，如小众软件和善用佳软，是可以投放广告盈利的（博主当然可以选择不投放）。如果仅仅是记录一些自己的东西，完全可以用新浪博客等等博客服务提供商。</p>
+
+
+
+
+<p>所以，仅仅是关于博客这一点，我就走偏了。开独立博客有几个缺点：1）需要自己购买域名，虚拟主机 2）得自己安装博客程序，如Wordpress以及MoveType 3) 插件管理自己动手，虽然DIY多了些，但是也挺麻烦的。</p>
+
+
+
+
+<p>这些缺点，其实我都是可以避免的。所以我决定，先转移博客到某个BPS上去，以后有那个目的去自己写一个博客框架，或者需要弄一个专题博客，再独立开博。不过域名我会保留。</p>
+
+
+
+
+<p>除了博客之外，在其它地方我也犯迷糊。我记不太清楚，最早我干嘛要用Linux了。但是现在我明白了，我讨厌Windows，也讨厌腾讯，360等这些公司。但是，对于目前的我来说，要真正的做好一些事情，比如学习上的事情，我必须要用Windows，因为我没有额外的时间去摆弄Linux。而且我也不需要去摆弄它。有那么多时间去配置Xorg，去配置Awesome或者是e17这一类东西，我何必不花时间多看看开源框架的一些源代码呢？我何必不自己动手写一些代码呢？我何必不去研究一些新的算法，或者巩固旧的一些算法呢？</p>
+
+
+
+
+<p>我先在还死守着Linux，那是因为Ubuntu确实能解决很多使用问题。不过如果有需要，我会换成电脑里另外一个系统，尽管我不喜欢它，但是能让我更有效率做一件事情，我就毫不犹豫选择它。</p>
+
+
+
+
+<p>还有一些习惯我觉得特别不好。我做毕业论文的时候，为了给图片分类，用PyGtk和QT分别憋了一个图片分类软件出来。现在想想，真是蛋疼。我是做项目想出论文的啊，做那个软件，消耗了我大量的时间。</p>
+
+
+
+
+<p>仅以此文，自勉。</p>
+
+
+
+
+<p></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[批量转换ppt为pdf文件]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/11/18/%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2ppt%E4%B8%BApdf%E6%96%87%E4%BB%B6/"/>
+    <updated>2010-11-18T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/11/18/批量转换ppt为pdf文件</id>
+    <content type="html"><![CDATA[<p>学校老师给的讲义一般都是ppt的讲义文件，这个在电脑上看起来并不如pdf方便，在网上搜到一个办法批量转换ppt为pdf文件。</p>
+
+
+
+
+<p>很多类似的服务都是收费的，不过这个是免费的，而且能满足cli一票人的欲望。</p>
+
+
+
+
+<p>要用到的工具首先是openoffice，这个是必须的。</p>
+
+
+
+
+<p>其它的辅助工具在这里下载 http://www.artofsolving.com/opensource 。其中的JODConverter是Java封装的工具包，可以用于网络服务器或者其它形式的用途，PyODConverter就是一个Python文件了，这个适合通过命令行来进行批处理的人。</p>
+
+
+
+
+<p>下面的方法主要用于装有openoffice的Linux平台下。Windows也是可以的，方法在上面那个网站上有说明。<br />
+首先，让openoffice运行成一个后台服务器，监听一个socket。
+<pre lang="bash">
+soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard
+</pre></p>
+
+
+
+
+<p>假设下载的是DocumentConverter.py，编辑这个文件，在最开始插入一行注释：
+<pre lang="bash">
+#!/usr/bin/env python
+</pre>
+然后让其可运行
+<pre lang="bash">
+chmod +x DocumentConverter.py
+</pre></p>
+
+
+
+
+<p>现在可以开始进行批处理了。假设cd到一个有ppt的目录下，运行以下命令进行处理：
+<pre lang="bash">
+for i in `ls *.ppt` ;do DocumentConverter.py $i `echo $i | sed 's/.ppt/.pdf/'`  ; done;
+</pre></p>
+
+
+
+
+<p>Ubuntu完美运行。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[evince显示中文pdf乱码]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/10/03/evince%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87pdf%E4%B9%B1%E7%A0%81/"/>
+    <updated>2010-10-03T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/10/03/evince显示中文pdf乱码</id>
+    <content type="html"><![CDATA[<p>在gnome里面，evince算是比较小巧的pdf阅读器了，相比于adobe reader以及xpdf这些臃肿又不美观的东西。</p>
+
+
+
+
+<p>但是evince显示某些pdf的时候，中文是乱码或者干脆什么都没有，有个很简单的办法解决这个问题，安装poppler-data就可以了。</p>
+
+
+
+
+<p>Ubuntu直接运行：
+<pre lang="bash">sudo apt-get install poppler-data</pre></p>
+
+
+
+
+<p>如果还不行，那么试试这个：
+<pre lang="bash">sudo apt-get install cmap-adobe-cns1 cmap-adobe-gb1 gs-cjk-resource</pre></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[杂事，以及Ubuntu 10.10]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/09/27/%E6%9D%82%E4%BA%8B%EF%BC%8C%E4%BB%A5%E5%8F%8Aubuntu-10-10/"/>
+    <updated>2010-09-27T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/09/27/杂事，以及ubuntu-10-10</id>
+    <content type="html"><![CDATA[<p>好久没写东西了。</p>
+
+
+
+
+<p>最近我觉得自己挺忙的，但是至于都在做什么我又说不出个所以然出来，只知道自己围着一堆事情在转悠。</p>
+
+
+
+
+<p>有些事情以前没有认真对待，现在发现为时已晚了。9月份就这么过去了，想起那首歌Wake Me Up When September Ends，还真像那么回事。</p>
+
+
+
+
+<p>已经要到10月份了，那么Ubuntu 10.10是要发布了。</p>
+
+
+
+
+<p>于是心血来潮，把电脑上的10.04升级到10.10，期间因为gnome-shell，出了点小问题，不过好在问题不大，升级过程还算顺利。</p>
+
+
+
+
+<p>新的版本变化我还没感觉出来，不过界面已经有了变化，而且壁纸也新添加了几张。不过仅仅界面的改变是没什么新意的，因为过不了多久就会看腻了的。将界面变成一种文化才是最重要的，像苹果那样。</p>
+
+
+
+
+<p>不过，新的界面看起来确实很舒服。</p>
+
+
+
+
+<p>时间过得如此之快，上次升级10.04还好像在昨天。</p>
+
+
+
+
+<p>而我的梦想又如此不现实，真是让人蛋疼的生活和蛋疼的自己。</p>
+
+
+
+
+<p>PS: wordpress也是越来越完善了，时间过得真快……</p>
+
+]]></content>
+  </entry>
+  
+</feed>

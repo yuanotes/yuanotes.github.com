@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>slackware的ibus包 - 谋定而后动</title>
+  <meta name="author" content="Brooklyn">
+
+  
+  <meta name="description" content="可能是因为最近无聊吧，摆弄起slackware来了。 本来很喜欢archlinux的，但是不得不承认，archlinux的bug太多了。 相比较而言，slackware就成熟多了，虽然定制性很高，但是从archlinux过渡过来还是很自然的。比起archlinux来， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yuanotes.github.com/blog/2009/09/14/ibus-package-on-slackware/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="谋定而后动" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">谋定而后动</a></h1>
+  
+    <h2>Just Do It</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yuanotes.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Slackware的ibus包</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-14T00:00:00+08:00" pubdate data-updated="true">Sep 14<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>可能是因为最近无聊吧，摆弄起slackware来了。</p>
+
+<p>本来很喜欢archlinux的，但是不得不承认，archlinux的bug太多了。</p>
+
+<p>相比较而言，slackware就成熟多了，虽然定制性很高，但是从archlinux过渡过来还是很自然的。比起archlinux来，slackware在很多配置方面都做好了，不需要再怎么配置。至少休眠是不需要任何多余的配置的，我的xfce4居然能直接休眠成功……当然，废话不说了。</p>
+
+<p>slackware的很大的一个缺点就是几乎没有源，至少没有官方提供源。（有个意大利的站点提供源）官方提供的是包，而这些包不是经常升级的。也就是说要装很多软件的话，就要自己打包或者是直接make install了。个人认为打包比较好，好卸载。其实，这个对于某些人来说，也是优点啊，:-)</p>
+
+<p>用了那么久的scim和fcitx，一直对ibus的映像不好。因为ibus速度太慢，常常是我打完几个字符还没有反应。后来发现，ibus在slackware上表现非常优秀，而号称最快的fcitx在ubuntu上有时候也反应很慢，看来不能怪输入法的啊。</p>
+
+<p>以下是我自己根据源码打的包，由于经验不足，包的名字以及介绍有点怪异。但是能用，这个，呵呵。</p>
+
+<p>从官方源码 git来的，代码日期是 2009-09-13。</p>
+
+<p><iframe title="Preview" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" style="width:98px;height:115px;padding:0;background-color:#fcfcfc;" src="http://cid-9c865a75990fb7d7.skydrive.live.com/embedicon.aspx/%e7%a8%8b%e5%ba%8f/slackware^_packages/ibus.txz"></iframe><iframe title="Preview" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" style="width:98px;height:115px;padding:0;background-color:#fcfcfc;" src="http://cid-9c865a75990fb7d7.skydrive.live.com/embedicon.aspx/%e7%a8%8b%e5%ba%8f/slackware^_packages/ibus-pinyin.txz"></iframe><iframe title="Preview" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" style="width:98px;height:115px;padding:0;background-color:#fcfcfc;" src="http://cid-9c865a75990fb7d7.skydrive.live.com/embedicon.aspx/%e7%a8%8b%e5%ba%8f/slackware^_packages/ibus-gtk.txz"></iframe></p>
+
+<p>ibus是必须要装的。其次是ibus-pinyin，这个是拼音输入法。最后是ibus-gtk包了，传说这个可以完美解决输入框跟随的问题。我装下之后发现传说属实，当然这个是我从debian的包转过来的，具体谁做的我不清楚。</p>
+
+<p>最后，我可没有注意到什么版权问题，包里说明是包是我做的，软件可不是我做的，这个要分清楚。</p>
+
+<p>还有要是有什么问题就通知我删掉吧。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brooklyn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-14T00:00:00+08:00" pubdate data-updated="true">Sep 14<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yuanotes.github.com/blog/2009/09/14/ibus-package-on-slackware/" data-via="" data-counturl="http://yuanotes.github.com/blog/2009/09/14/ibus-package-on-slackware/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/08/05/solve-ubuntu-ifupdown-problem/" title="Previous Post: ubuntu ifupdown 问题解决">&laquo; ubuntu ifupdown 问题解决</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/09/17/wicd-1-6-2-2-on-slackware/" title="Next Post: slackware的wicd-1.6.2.2">slackware的wicd-1.6.2.2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/02/2011%E5%B9%B4%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93/">2011年的一点总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/25/%E9%AB%98%E5%BE%B7%E7%BA%B3%E8%87%AA%E8%BF%B0%E7%94%9F%E5%B9%B3epub%E4%B8%8B%E8%BD%BD/">高德纳自述生平epub下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/03/%E9%9B%87%E5%B7%A5%E4%BA%BA%E7%94%9F/">雇工人生</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/25/django%E7%9A%84language-code%E8%AE%BE%E7%BD%AE/">Django的language code设置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/">控制笔记本上的触摸板</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/yuanotes">@yuanotes</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yuanotes',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brooklyn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

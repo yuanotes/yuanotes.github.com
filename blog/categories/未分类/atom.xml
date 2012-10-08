@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 未分类 | 谋定而后动]]></title>
+  <link href="http://yuanotes.github.com/blog/categories/未分类/atom.xml" rel="self"/>
+  <link href="http://yuanotes.github.com/"/>
+  <updated>2012-10-09T04:03:20+08:00</updated>
+  <id>http://yuanotes.github.com/</id>
+  <author>
+    <name><![CDATA[Brooklyn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[高德纳自述生平epub下载]]></title>
+    <link href="http://yuanotes.github.com/blog/2011/12/25/%E9%AB%98%E5%BE%B7%E7%BA%B3%E8%87%AA%E8%BF%B0%E7%94%9F%E5%B9%B3epub%E4%B8%8B%E8%BD%BD/"/>
+    <updated>2011-12-25T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2011/12/25/高德纳自述生平epub下载</id>
+    <content type="html"><![CDATA[<p>具体下载过程，我可能描述的不太清楚，呃，将就着看吧，我太懒了。</p>
+
+
+
+
+<p>这些资料看视频是很无聊的，一个老头在那里讲，听着听着就睡着了。</p>
+
+
+
+
+<p>有网友提供了整个视频的字幕，其实也就是文本文件，地址是<a href="https://github.com/kragen/knuth-interview-2006" target="_blank">https://github.com/kragen/knuth-interview-2006</a>。</p>
+
+
+
+
+<p>如果你确实喜欢看视频，地址在这里<a href="http://webofstories.com/play/17060" target="_blank">http://webofstories.com/play/17060</a>。</p>
+
+
+
+
+<p>进入正题：
+<ol>
+    <li>我这里不提供epub下载，所以纯粹为了找epub文件的要失望了。因为我不想把我的博客变成下载站。</li>
+    <li>首先，去<a title="http://dotepub.com/" href="http://dotepub.com/" target="_blank">http://dotepub.com/</a>下载这个插件。嗯，你也可以通过书签的方式来使用。</li>
+    <li>去上面的github网址<a href="https://github.com/kragen/knuth-interview-2006" target="_blank">https://github.com/kragen/knuth-interview-2006</a>。然后点击dotepub插件或者嗯，书签。接下来会有个epub文件下载，下载下来就好了。如果你使用的电脑来下载的话，我个人推荐下载到dropbox这一类同步工具中。通过android还有ipad下载，我还没测试过，原因见下一步。</li>
+    <li><strong>[optional]</strong>dotepub默认会去掉网页中的链接，也就是说，会去掉那些小节的标题。我们当然想看到标题了。根据dotepub的描述，去掉immersive选项就可以了。但是在我这里，他们提供的chrome插件是有问题的，我用的是书签。总是，我下载的文件，那些标题都没有了。</li></ol></p>
+
+
+
+
+<p>我用的办法是，在chrome里面执行：
+<pre lang="javascript">$('h2').each(function(){var t=$('a',this).text();$(this).text(t);})</pre>
+
+</p>
+
+
+
+
+<p>EOF</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[每天练习画画坚持9年之后]]></title>
+    <link href="http://yuanotes.github.com/blog/2011/09/25/%E6%AF%8F%E5%A4%A9%E7%BB%83%E4%B9%A0%E7%94%BB%E7%94%BB%E5%9D%9A%E6%8C%819%E5%B9%B4%E4%B9%8B%E5%90%8E/"/>
+    <updated>2011-09-25T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2011/09/25/每天练习画画坚持9年之后</id>
+    <content type="html"><![CDATA[<p>在02年9月15日，国外的一个艺术论坛<a href="http://www.conceptart.org/">http://www.conceptart.org</a>，一个家伙发了一个帖子：
+<blockquote>Hi Everyone,</blockquote></p>
+
+
+
+
+<p>If you didn't see my last post(s) on <a href="http://www.conceptart.org/" target="_blank">www.conceptart.org</a> then I will bring you up to speed. Basically I have been inspired by the art produced and the work ethic of Jon Foster, Andrew Jones, Jason Manley, and my brother "Smeagol71" (among many others) and have decided to learn how to paint (primarily digitally). I am starting from rock bottom and I am going to paint at least one painting and do at least one sketch every day...probably two on the weekends. The order you see them in is the order that I am painting and/or sketching them...every day starting on 9/15/02. I am bearing my soul to everyone. I will post everything I do...whether it is awful or not. Most of the paintings and sketches, in the beginning, are going to look like crap but hopefully over the days/weeks/months/years they will start to get better. I have no formal art training but have signed up for classes this semester. I have a passion to paint and welcome any encouragement or critique that you want to give. Any feedback you want to give me you can leave in the threads I or just email me.</p>
+
+
+
+
+<p>Thanks
+意思我翻译一下（本人水平有限，请指正）：
+<blockquote>大家好，</blockquote></p>
+
+
+
+
+<p>如果你们以前没在 www.conceptart.org上我的帖子，你们可以通过这段文字对我有个了解。我很喜欢Jon Foster, Andrew Jones, Jason Manley和我哥哥 "Smeagol71"(还有其他许多人) 创作的艺术作品，于是我决定学会如何画画(主要是数码绘画)。我先从最基础的开始，每天至少一张绘画和至少一张速写，周末可能有两张。你们(在论坛)见到的帖子的顺序就是我画画的顺序，每天都有，从02年9月15号开始。希望大家能够做个见证。只要是我画的都会放上来，无论画得多么糟糕。大部分的绘画和速写在最开始都会很糟糕，但愿随着时间的推移，我画得会越来越好。我没有受过正规的绘画训练，但是这个学期已经报名参加一些课程。我有绘画的热情，欢迎大家给出鼓励和批评。如果你有什么建议可以回帖或者给我发邮件。</p>
+
+
+
+
+<p>谢谢
+论坛的地址是 <a href="http://www.conceptart.org/forums/showthread.php?t=870">http://www.conceptart.org/forums/showthread.php?t=870</a>，他是从02年9月15号开始，但是这个帖子是从21号开始的，前几天的零散的放在别的帖子里，不过没什么关系。各位看官可以去论坛里大致瞧瞧他最初的一些作品，对比一下近期，也就是2011年9月份左右的一些帖子，我相信你们会跟我一样震惊的。 他还有一个个人网站，放的是一些他最近的作品 <a href="http://www.jonathanhardesty.com/">http://www.jonathanhardesty.com</a></p>
+
+
+
+
+<p>为了方便，我放几张图做个对比：</p>
+
+
+
+
+<p>最初的一些图片（素描）：
+<a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Drawing3Spoon.jpg"><img class="size-medium wp-image-25476 alignnone" title="Drawing3Spoon" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Drawing3Spoon-300x197.jpg" alt="" width="300" height="197" /></a></p>
+
+
+
+
+<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/DrawingNumber2Candle.jpg"><img class="size-medium wp-image-25477 alignnone" title="DrawingNumber2Candle" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/DrawingNumber2Candle-300x253.jpg" alt="" width="300" height="253" /></a></p>
+
+
+
+
+<p>最初的一些图片（绘画）：
+<a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PinkBallpainting10.jpg"><img class="size-medium wp-image-25482 alignnone" title="PinkBallpainting10" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PinkBallpainting10-235x300.jpg" alt="" width="235" height="300" /></a></p>
+
+
+
+
+<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PaintingNumber9GreenCylinder.jpg"><img class="size-medium wp-image-25480 alignnone" title="PaintingNumber9GreenCylinder" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PaintingNumber9GreenCylinder-235x300.jpg" alt="" width="235" height="300" /></a></p>
+
+
+
+
+<p>最近的一些图片（素描）：</p>
+
+
+
+
+<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/summerflowers_websize.jpg"><img class="size-medium wp-image-25484 alignnone" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/summerflowers_websize-206x300.jpg" alt="" width="206" height="300" /></a></p>
+
+
+
+
+<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Julie_websize.jpg"><img class="alignnone size-medium wp-image-25478" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Julie_websize-300x246.jpg" alt="" width="300" height="246" /></a></p>
+
+
+
+
+<p>最近的一些图片（绘画）：</p>
+
+
+
+
+<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Step-15-Finished_Varnished_websize.jpg"><img class="alignnone size-medium wp-image-25483" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Step-15-Finished_Varnished_websize-180x300.jpg" alt="" width="180" height="300" /></a></p>
+
+
+
+
+<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/the_letter_small.jpg"><img class="alignnone size-thumbnail wp-image-25485" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/the_letter_small-150x150.jpg" alt="" width="150" height="150" /></a></p>
+
+
+
+
+<p>另外，有人把他所有的图片都抓取下来，可以打包下载（墙外）：https://s3.amazonaws.com/markerdmann.com/paintings.tar</p>
+
+
+
+
+<p>还有视频（墙外）：https://s3.amazonaws.com/markerdmann.com/Paintings.mov</p>
+
+
+
+
+<p>在线视频（还是墙外）：http://vimeo.com/29510470</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[博客改动]]></title>
+    <link href="http://yuanotes.github.com/blog/2011/09/25/25454/"/>
+    <updated>2011-09-25T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2011/09/25/25454</id>
+    <content type="html"><![CDATA[<p>今天不知道为什么，可能是闲得慌，决定改动一下博客：
+<ol>
+    <li>主题更改。<br />
+很喜欢lixiaolai.com主题的字体，但是不能直接下载他的主题，就把wordpress 2011的字体改了一下，还行，像那么会事儿。</li>
+    <li>把主机迁移了一下。<br />
+最早放在hostmonster上，速度一般，不快也不慢。放到AWS-EC2上，但是发现ping值达到了1000ms，就算了。用cloudflare也不理想，速度虽然快了很多，但是静态文件都缓存了。最后ping了一下ruanyifeng.com的站点，发现他用的是idcsoft的主机，机房在香港，速度接近100ms，这个值很理想，而且他们的主机还支持Python和Ruby，具体怎么实现我还不太清楚。</li>
+    <li>换了个域名。<br />
+原来的域名yuanotes.com太麻烦，太难记住，换成chen-yuan.me，这个很容易记住，可惜chenyuan.me不知道被谁抢注了。</li>
+    <li>近期文章标题很丑陋。<br />
+一些代码直接写到标题里，像乱码一样。或许这一类东西应该放到一个wiki里。</li>
+</ol>
+<p>就这些，今天还挺忙碌的。</p></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[milestone充电时候屏幕漂移的原因]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/10/07/milestone%E5%85%85%E7%94%B5%E6%97%B6%E5%80%99%E5%B1%8F%E5%B9%95%E6%BC%82%E7%A7%BB%E7%9A%84%E5%8E%9F%E5%9B%A0/"/>
+    <updated>2010-10-07T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/10/07/milestone充电时候屏幕漂移的原因</id>
+    <content type="html"><![CDATA[<p>我的milestone插入电脑的时候，手机屏幕漂移，有时候怎么也点不中正确的位置，有时候点的位置不是我想要的。<br />
+论坛上有人发贴，称是排线坏了，并附有拆机图片，修好后就没有这个问题了。</p>
+
+
+
+
+<p>我自认为没有这么牛逼和狠心，不过使用久了之后我发现了，是充电的时候电压不够。</p>
+
+
+
+
+<p>电压不够分两种：<br />
+漏电，就是milestone里面的排线坏了，milestone的电池使用转移到了外置的这根线上，如果提供的电压不够，则很可能出现漂移的情况。<br />
+充电提供的电压不够。<br />
+测试一下知道结果：如果插入电源充电不漂移（电压够高，前提是你的充电器不是冒充的），但是插入电脑（特别是笔记本电脑）漂移的话，那极有可能是第二种。如果不论插入哪里都漂移的话，那你的milestone思春了，极有可能是内分泌失调-排线坏了。排线坏了可以去论坛搜那个牛人的拆机帖子，个人不建议自己拆机。</p>
+
+
+
+
+<p>如果是第二种情况，那么这里有一个解决办法，那就是通过SetCPU来进行设置。具体的设置可以去论坛搜索。设置USB充电的时候频率低点就可以了。</p>
+
+
+
+
+<p>如果是电压不够，记得测试一下是否是充电线的原因。</p>
+
+
+
+
+<p>以下是我的测试，如果你明白了上面的部分，下面可以不看。</p>
+
+
+
+
+<p>--------------------------昏哥线-------------------------------------<br />
+首先，我的笔记本是集成显卡，电源电压不足。我用了不同的两根USB线测试手机，发现均出现漂移的现象，这基本可以排除线的问题了。</p>
+
+
+
+
+<p>其次，我用别人的电脑测试了一下，居然没有任何漂移问题，说明该电脑提供的USB电压充足，我内牛满面。</p>
+
+
+
+
+<p>再次，我插入电源，电压充足，不漂移。</p>
+
+
+
+
+<p>最后，我用SetCPU限制USB充电时候的电压，手机需求电压降低，不漂移。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[《三体》第一部读后评]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/07/24/%E3%80%8A%E4%B8%89%E4%BD%93%E3%80%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E8%AF%BB%E5%90%8E%E8%AF%84/"/>
+    <updated>2010-07-24T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/07/24/《三体》第一部读后评</id>
+    <content type="html"><![CDATA[<p>我在几天之前就看完了第一部，当时有很多想要表达的，如果当时就上网写书评肯定有很多可写。不过过了那个时间，而且生活中乱七八糟的事情一大堆，忘了个七七八八，就描述的没有那么完整了。</p>
+
+
+
+
+<p>书中有两个方面让我震撼，一个是关于叶文洁这个女人，还有就是关于那些科幻的噱头的。</p>
+
+
+
+
+<p>关于叶文洁那一段很让人蛋疼。我看小说不喜欢看悲剧，但是因为这些前奏和铺垫，不得不看下去。看《球状闪电》有点囫囵吞枣，为了剧情而胡略了很多东西，所以看《三体》我是忍住一字一句看下来的。</p>
+
+
+
+
+<p>看刘慈欣的书有一点纠结，因为在他的书里面没有什么好人坏人的分别，甚至世俗道德区分也不是那么明显。叶文洁不能说是一个好人，最多算是一个可怜的人。她在文革时期受到的迫害实在是超出一个女人所能承担的极限。</p>
+
+
+
+
+<p>在那么无助彷徨的情形下，她一次一次感到那一点点的温暖，却又一次一次受到欺骗。或许作者是为了接下来的情节做铺垫，但是我觉得遭受背叛和虚伪，是人所不能承受的。</p>
+
+
+
+
+<p>叶文洁杀掉了自己的丈夫，牺牲了自己的女儿，虽然目的不在此，但是我已经能感受到她对于人类的残忍做出的偏执行为了，因为她也开始变得麻木和残忍，为了那个飘渺的理想和信念。</p>
+
+
+
+
+<p>一个科学家为了一个不确定的目标，所做出的一切疯狂举动，都是不科学的，因为她承受不了实验的失败。不能接受失败的科学是伪科学。</p>
+
+
+
+
+<p>接下来就到了主角汪淼了。汪淼是个很正常的男人，一个搞应用的教授。这个很正常的男人和那个流里流气的大史让我感觉好过一点。至少他们是正常人。</p>
+
+
+
+
+<p>然而作者大刘又玩了一个花样，叶文洁“背叛”了汪淼。她那慈爱的形象在汪淼心中轰然倒塌。</p>
+
+
+
+
+<p>这果然是一部背叛与欺骗的小说，叶文洁这么一个矛盾的人物，遭受的欺骗与背叛已经到了麻木的地步，但是她杀掉了那个深爱着她的丈夫，连她女儿的死，在她心中也掀不起太多涟漪。甚至连作为读者的我们，也跟主汪淼一起被耍了一道。</p>
+
+
+
+
+<p>抛开这些纠结的人性不谈，作为一部科幻巨著，科幻元素还是很浓厚的。冯诺伊曼构造出的那个人肉计算机，和纳米技术获取外形信息，甚至是神乎其神的智子，都让人觉得耳目一新。</p>
+
+
+
+
+<p>对于三体游戏世界的错乱关系，已经没什么可惊奇的了。不过，我作为一个计算机专业的学生，看到冯诺伊曼向秦始皇推荐的那个三千万士兵组成的计算机，简直就是……有一点佩服刘慈欣的想象力，但是我还是觉得这么算速度太慢了，毕竟人是不可能一秒钟能有几亿次举旗的动作，并且同时观测旁边人做出的动作，那个BUS总线虽然是骑兵构成，速度也太慢了。</p>
+
+
+
+
+<p>至于大史提出的用纳米技术弄成的线来截获轮船，这个真是有点匪夷所思。船上的电脑存储了人们想要的东西，如果用什么特种兵突袭，什么球状闪电，什么超声波武器，都无法在敌人破坏电脑中的数据之前干掉他们。但是如果在船只必经的道路上布满极其细的丝，那么船只只会轻而易举传过去，船上的人还在惊悚的过程中就会全部变成两三截。所有的人都局限在传统的手段中，只有大史想到。这个大史的思想确实很诡异，作为第一部和第二部主人公的精神支柱，果然不是盖的。这种淫才，不去搞尖端科学有点可惜，或者当一个耍弄手段的政客也比这个小小的警察身份强悍。怪不得刘慈欣要给他安排一个令人讨厌的性格，否则，这种淫才真是浪费。不过大史在三体小说中的身份，可是一点都没有浪费，算是至关重要的人物了。</p>
+
+
+
+
+<p>当然，三体的科幻创意很不错，但是有些地方过于匪夷所思导致作者要不停的“圆谎”。譬如智子可以看到整个星球，但是却因为某些很傻的原因，没有告诉船上的人有危险，这个虽然以他们很讨厌地球人奸诈的缘故说的过去，但是我个人感觉有点牵强。</p>
+
+
+
+
+<p>还有就是三体游戏世界时间跨度极大，作者表明玩家可以加快时间。这里我就不明白了，这个时间怎么加快？ 因为时间作为一个第四维的特殊存在，不可能只有某个人的时间加快了，所有玩家的时间都应该是统一的，否则，我也不知道会变成什么样子。乱纪元脱水之后加快时间，到了恒纪元无限的放慢时间，那么岂不是作弊吗？</p>
+
+
+
+
+<p>虽然有很多弊端，不过，总的来说，《三体》还是一部不错的科幻小说的，至少在我看过的几部科幻小说中算是不错的了。而且我这个人看什么小说都喜欢找硬伤，有时候可能找得不对，但是不符合基本逻辑会让我感觉很别扭。</p>
+
+]]></content>
+  </entry>
+  
+</feed>

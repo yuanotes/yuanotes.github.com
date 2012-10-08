@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>virtualbox 共享文件夹 - 谋定而后动</title>
+  <meta name="author" content="Brooklyn">
+
+  
+  <meta name="description" content="刚刚需要从虚拟机里的windows XP中拷点东西出来，发现共享文件夹没办法用。去网上搜了一下，看到了一篇指南，但是也没有用，于是看了下virtualbox的帮助文件，发现网上那个错了。 当linux是主机，XP是虚拟的时候。
+先在linux的virtualbox程序中设置sharedfolder &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yuanotes.github.com/blog/2010/01/18/virtualbox-%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9-2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="谋定而后动" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">谋定而后动</a></h1>
+  
+    <h2>Just Do It</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yuanotes.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Virtualbox 共享文件夹</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-18T00:00:00+08:00" pubdate data-updated="true">Jan 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>刚刚需要从虚拟机里的windows XP中拷点东西出来，发现共享文件夹没办法用。去网上搜了一下，看到了一篇指南，但是也没有用，于是看了下virtualbox的帮助文件，发现网上那个错了。</p>
+
+<p>当linux是主机，XP是虚拟的时候。<br />
+先在linux的virtualbox程序中设置sharedfolder，然后记下名字。<br />
+然后在XP中打开命令行，cmd，输入</p>
+
+<p><pre>net use x: \\vboxsrv\sharedfoldername</pre></p>
+
+<p>上面x:是你给的驱动器，26个字母中你随便给，最好是大写，比如我给的是Z:。当然不要和已有的相同。</p>
+
+<p>记得x:后面要空格。</p>
+
+<p>然后sharedfoldername就是之前设置所给的名字了。完了就能在XP的explorer中看到了。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brooklyn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-18T00:00:00+08:00" pubdate data-updated="true">Jan 18<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yuanotes.github.com/blog/2010/01/18/virtualbox-%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9-2/" data-via="" data-counturl="http://yuanotes.github.com/blog/2010/01/18/virtualbox-%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9-2/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/01/06/%E7%9C%8B%E5%88%B0%E4%B8%80%E7%AF%87%E5%A5%BD%E6%96%87%E7%AB%A0/" title="Previous Post: 看到一篇好文章">&laquo; 看到一篇好文章</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/01/18/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%80%83%E8%AF%95%E6%8B%BF%E4%B8%8D%E5%88%B0%E9%AB%98%E5%88%86/" title="Next Post: 为什么考试拿不到高分">为什么考试拿不到高分 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/02/2011%E5%B9%B4%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93/">2011年的一点总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/25/%E9%AB%98%E5%BE%B7%E7%BA%B3%E8%87%AA%E8%BF%B0%E7%94%9F%E5%B9%B3epub%E4%B8%8B%E8%BD%BD/">高德纳自述生平epub下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/03/%E9%9B%87%E5%B7%A5%E4%BA%BA%E7%94%9F/">雇工人生</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/25/django%E7%9A%84language-code%E8%AE%BE%E7%BD%AE/">Django的language code设置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/">控制笔记本上的触摸板</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/yuanotes">@yuanotes</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yuanotes',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brooklyn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

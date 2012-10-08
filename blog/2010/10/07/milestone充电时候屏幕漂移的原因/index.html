@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>milestone充电时候屏幕漂移的原因 - 谋定而后动</title>
+  <meta name="author" content="Brooklyn">
+
+  
+  <meta name="description" content="我的milestone插入电脑的时候，手机屏幕漂移，有时候怎么也点不中正确的位置，有时候点的位置不是我想要的。
+论坛上有人发贴，称是排线坏了，并附有拆机图片，修好后就没有这个问题了。 我自认为没有这么牛逼和狠心，不过使用久了之后我发现了，是充电的时候电压不够。 电压不够分两种：
+漏电， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yuanotes.github.com/blog/2010/10/07/milestone%E5%85%85%E7%94%B5%E6%97%B6%E5%80%99%E5%B1%8F%E5%B9%95%E6%BC%82%E7%A7%BB%E7%9A%84%E5%8E%9F%E5%9B%A0/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="谋定而后动" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">谋定而后动</a></h1>
+  
+    <h2>Just Do It</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yuanotes.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Milestone充电时候屏幕漂移的原因</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-07T00:00:00+08:00" pubdate data-updated="true">Oct 7<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>我的milestone插入电脑的时候，手机屏幕漂移，有时候怎么也点不中正确的位置，有时候点的位置不是我想要的。<br />
+论坛上有人发贴，称是排线坏了，并附有拆机图片，修好后就没有这个问题了。</p>
+
+<p>我自认为没有这么牛逼和狠心，不过使用久了之后我发现了，是充电的时候电压不够。</p>
+
+<p>电压不够分两种：<br />
+漏电，就是milestone里面的排线坏了，milestone的电池使用转移到了外置的这根线上，如果提供的电压不够，则很可能出现漂移的情况。<br />
+充电提供的电压不够。<br />
+测试一下知道结果：如果插入电源充电不漂移（电压够高，前提是你的充电器不是冒充的），但是插入电脑（特别是笔记本电脑）漂移的话，那极有可能是第二种。如果不论插入哪里都漂移的话，那你的milestone思春了，极有可能是内分泌失调-排线坏了。排线坏了可以去论坛搜那个牛人的拆机帖子，个人不建议自己拆机。</p>
+
+<p>如果是第二种情况，那么这里有一个解决办法，那就是通过SetCPU来进行设置。具体的设置可以去论坛搜索。设置USB充电的时候频率低点就可以了。</p>
+
+<p>如果是电压不够，记得测试一下是否是充电线的原因。</p>
+
+<p>以下是我的测试，如果你明白了上面的部分，下面可以不看。</p>
+
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;昏哥线&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-<br />
+首先，我的笔记本是集成显卡，电源电压不足。我用了不同的两根USB线测试手机，发现均出现漂移的现象，这基本可以排除线的问题了。</p>
+
+<p>其次，我用别人的电脑测试了一下，居然没有任何漂移问题，说明该电脑提供的USB电压充足，我内牛满面。</p>
+
+<p>再次，我插入电源，电压充足，不漂移。</p>
+
+<p>最后，我用SetCPU限制USB充电时候的电压，手机需求电压降低，不漂移。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brooklyn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-07T00:00:00+08:00" pubdate data-updated="true">Oct 7<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/未分类/'>未分类</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yuanotes.github.com/blog/2010/10/07/milestone%E5%85%85%E7%94%B5%E6%97%B6%E5%80%99%E5%B1%8F%E5%B9%95%E6%BC%82%E7%A7%BB%E7%9A%84%E5%8E%9F%E5%9B%A0/" data-via="" data-counturl="http://yuanotes.github.com/blog/2010/10/07/milestone%E5%85%85%E7%94%B5%E6%97%B6%E5%80%99%E5%B1%8F%E5%B9%95%E6%BC%82%E7%A7%BB%E7%9A%84%E5%8E%9F%E5%9B%A0/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/10/03/the-ghost-writer/" title="Previous Post: The Ghost Writer">&laquo; The Ghost Writer</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/10/08/%E7%BA%A6%E7%BF%B0%E5%88%97%E4%BE%AC%E6%B0%B8%E6%81%92%E7%9A%84%E7%BB%8F%E5%85%B8imagine/" title="Next Post: 约翰列侬永恒的经典Imagine">约翰列侬永恒的经典Imagine &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/02/2011%E5%B9%B4%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93/">2011年的一点总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/25/%E9%AB%98%E5%BE%B7%E7%BA%B3%E8%87%AA%E8%BF%B0%E7%94%9F%E5%B9%B3epub%E4%B8%8B%E8%BD%BD/">高德纳自述生平epub下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/03/%E9%9B%87%E5%B7%A5%E4%BA%BA%E7%94%9F/">雇工人生</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/25/django%E7%9A%84language-code%E8%AE%BE%E7%BD%AE/">Django的language code设置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/">控制笔记本上的触摸板</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/yuanotes">@yuanotes</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yuanotes',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brooklyn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>正则表达式如何避免贪婪匹配 - 谋定而后动</title>
+  <meta name="author" content="Brooklyn">
+
+  
+  <meta name="description" content="本来是因为兴趣而研究 http://www.douban.com/group/topic/21206826/ 看到里面一个正则表达式，这个另我费解，自己也试了一下，发现我以前对 .* 的匹配理解有误。 先说明一下 .*? 的作用。本来我也稀里糊涂，看过http://lordong.net/wp/ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yuanotes.github.com/blog/2011/09/15/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84-%E5%8F%96%E4%BB%A3%E8%B4%AA%E5%A9%AA%E5%8C%B9%E9%85%8D/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="谋定而后动" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">谋定而后动</a></h1>
+  
+    <h2>Just Do It</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yuanotes.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">正则表达式如何避免贪婪匹配</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-15T00:00:00+08:00" pubdate data-updated="true">Sep 15<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>本来是因为兴趣而研究 <a href="http://www.douban.com/group/topic/21206826/">http://www.douban.com/group/topic/21206826/</a></p>
+
+<p>看到里面一个正则表达式，这个另我费解，自己也试了一下，发现我以前对<code> .*</code> 的匹配理解有误。</p>
+
+<p>先说明一下<code> .*?</code> 的作用。本来我也稀里糊涂，看过<a href="http://lordong.net/wp/post/1127.html">http://lordong.net/wp/post/1127.html</a> 才有所了解。</p>
+
+<p>既然那篇文章说的很清楚，我就不抄袭他的例子了，而且我自己也给不出一个更好的。</p>
+
+<p>说说我对 <code>.*?</code> 里面<code> .*</code> 的理解吧。</p>
+
+<p><code>.</code> 是表示任意字符的，那么<code> .* </code>就是任意字符任意多个。</p>
+
+<p>以前我错误的理解了<code> . </code> 的含义，我觉得<code>a.*b</code>可以匹配 <code>ab</code>也可以匹配<code>acccccccccccccb</code>，这是我的理解，只能匹配<strong>一个字符0次或者任意次</strong>，当我发现还可以匹配 <code>acdeerwb</code>的时候我就没弄清楚到底是怎么匹配的。这种稀里糊涂的精神最要不得。</p>
+
+<p>现在通过<code>.*</code>和<code>.*?</code>可以明白了，<code>.</code>是匹配任意字符没错，但是却不是一个固定不变的字符，<code>*</code>表示前面的元素是0个或者任意多个，那么 <code>.*?</code>就表示<code>?</code>前面的那个任意字符，只能出现一次或者0次，出现多次就不匹配，这就恰好是我们需要的避免贪婪匹配。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brooklyn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-15T00:00:00+08:00" pubdate data-updated="true">Sep 15<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/编程/'>编程</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yuanotes.github.com/blog/2011/09/15/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84-%E5%8F%96%E4%BB%A3%E8%B4%AA%E5%A9%AA%E5%8C%B9%E9%85%8D/" data-via="" data-counturl="http://yuanotes.github.com/blog/2011/09/15/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84-%E5%8F%96%E4%BB%A3%E8%B4%AA%E5%A9%AA%E5%8C%B9%E9%85%8D/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/09/13/django%E4%B8%ADblanktrue%E4%BB%A5%E5%8F%8Anulltrue/" title="Previous Post: Django中model空值表示">&laquo; Django中model空值表示</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/09/25/25454/" title="Next Post: 博客改动">博客改动 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/02/2011%E5%B9%B4%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93/">2011年的一点总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/25/%E9%AB%98%E5%BE%B7%E7%BA%B3%E8%87%AA%E8%BF%B0%E7%94%9F%E5%B9%B3epub%E4%B8%8B%E8%BD%BD/">高德纳自述生平epub下载</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/03/%E9%9B%87%E5%B7%A5%E4%BA%BA%E7%94%9F/">雇工人生</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/25/django%E7%9A%84language-code%E8%AE%BE%E7%BD%AE/">Django的language code设置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/">控制笔记本上的触摸板</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/yuanotes">@yuanotes</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yuanotes',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Brooklyn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
