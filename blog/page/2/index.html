@@ -9,8 +9,7 @@
   <meta name="author" content="Brooklyn">
 
   
-  <meta name="description" content="在02年9月15日，国外的一个艺术论坛http://www.conceptart.org，一个家伙发了一个帖子：
-Hi Everyone, If you didn&#8217;t see my last post(s) on www.conceptart.org then I will bring &hellip;">
+  <meta name="description" content="以前见过同学用Dell的笔记本电脑，触摸板都没有开关控制，好像一些联想的电脑也是这样。我觉得这样的电脑根本就没法用，打字经常出现莫名的鼠标干扰。 公司新发的Dell笔记本电脑，触摸板需要驱动来控制。Ubuntu下驱动可能出了问题，默认的按键应该是Fn+F5，但是按了之后却没有反映。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +64,89 @@ Hi Everyone, If you didn&#8217;t see my last post(s) on www.conceptart.org the
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/">控制笔记本上的触摸板</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-10T00:00:00+08:00" pubdate data-updated="true">Oct 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>以前见过同学用Dell的笔记本电脑，触摸板都没有开关控制，好像一些联想的电脑也是这样。我觉得这样的电脑根本就没法用，打字经常出现莫名的鼠标干扰。</p>
+
+<p>公司新发的Dell笔记本电脑，触摸板需要驱动来控制。Ubuntu下驱动可能出了问题，默认的按键应该是<code>Fn+F5</code>，但是按了之后却没有反映。</p>
+
+<p>在google中搜索之后，在askubuntu上找到了一个曲折的答案。</p>
+
+<p>为打开和关闭触摸板写一个脚本文件，然后通过快捷键绑定这个脚本文件，很明白了吧？</p>
+
+<p><strong>1. 找到你的触摸板的设备名称</strong>
+<pre lang="bash">xinput list</pre></p>
+
+<p>一般名称是包含<code>PS/2</code> 这种字符的，比如我的触摸板设备名称就是<code>ImPS/2 ALPS GlidePoint</code>。</p>
+
+<p><strong>2. 新建一个文件，随便叫什么名字，这个文件是一个shell脚本，可以执行的。</strong>
+内容如下：
+<pre lang="bash" /></p>
+
+<p>#!/bin/bash<br />
+enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.\+1$"`</p>
+
+<p>if [ -n "$enabled" ]; then<br />
+    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 0<br />
+else<br />
+    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 1<br />
+fi
+</p>
+
+<p>意思很清楚，就是通过<code>xinput</code>来判断触摸板设备是否开启，如果开启则给 <code>$enabled</code>赋一个值，否则该变量就是空。</p>
+
+<p>接下来的执行就是，如果触摸板打开了，那么就关掉，如果关掉了那么就打开。</p>
+
+<p><strong>3.绑定快捷键</strong>
+给这个脚本绑定一个快捷键。<br />
+这一步，就是设置快捷键绑定这个脚本了。我的笔记本就是绑定的<code>Fn+F5</code>哦。<br />
+在绑定之前，可以在命令行里尝试一下是否有用，确保了能够正常开关的话，就可以了。</p>
+
+<p><strong>4.如果上面都走不通的话，不妨尝试通过内核模块来控制。</strong>
+这里的<code>psmouse</code>就是触摸板的模块名称了。</p>
+
+<p>启动：
+<pre lang="bash">
+sudo modprobe psmouse
+</pre></p>
+
+<p>关闭：
+<pre lang="bash">
+sudo rmmod psmouse
+</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -284,60 +366,6 @@ Hi Everyone, If you didn&#8217;t see my last post(s) on www.conceptart.org the
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/13/blocktrans/">Django的blocktrans语法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-13T00:00:00+08:00" pubdate data-updated="true">Sep 13<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>官方文档的blocktrans的的标签在django1.2.5和1.3中不一太一样。</p>
-
-<p>blocktrans的标签中中不支持访问变量名的属性以及list或者dict的成员，也就是user.email这种写法是不允许的。</p>
-
-<p>文档中实例代码是这样的，这种在1.2.5中不支持，但是在1.3中是支持的：
-<pre lang="html">
-{% blocktrans with amount=article.price count years=i.length %}
-...
-{% endblocktrans %}
-</pre></p>
-
-<p>在1.2.5中必须用老的语法：
-<pre lang="html">
-{% blocktrans with article.price as amount count i.length as year %}
-..
-{% endblocktrans %}
-</pre></p>
-
-<p>另外，老的语法中,with A as B [and C as D] 中的 and 不能跟count写在一起。可以理解为count和with是两个单独的函数，只能并列放着，我没有看源代码，只是个人理解。新版本的新语法比较简洁，如果没有必要一定要守着1.2.5的话，升到1.3还是不错的。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -355,6 +383,10 @@ Hi Everyone, If you didn&#8217;t see my last post(s) on www.conceptart.org the
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/12/new-post/">保持工作环境的纯洁性</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/01/02/2011%E5%B9%B4%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93/">2011年的一点总结</a>
       </li>
     
@@ -368,10 +400,6 @@ Hi Everyone, If you didn&#8217;t see my last post(s) on www.conceptart.org the
     
       <li class="post">
         <a href="/blog/2011/10/25/django%E7%9A%84language-code%E8%AE%BE%E7%BD%AE/">Django的language code设置</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/">控制笔记本上的触摸板</a>
       </li>
     
   </ul>
