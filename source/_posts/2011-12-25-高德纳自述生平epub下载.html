@@ -25,7 +25,9 @@ comments: true
 	<li><strong>[optional]</strong>dotepub默认会去掉网页中的链接，也就是说，会去掉那些小节的标题。我们当然想看到标题了。根据dotepub的描述，去掉immersive选项就可以了。但是在我这里，他们提供的chrome插件是有问题的，我用的是书签。总是，我下载的文件，那些标题都没有了。</li></ol></p>
 
 <p>我用的办法是，在chrome里面执行：
-<pre lang="javascript">$('h2').each(function(){var t=$('a',this).text();$(this).text(t);})</pre>
+``` javascript
+$('h2').each(function(){var t=$('a',this).text();$(this).text(t);})
+```
 
 </p>
 

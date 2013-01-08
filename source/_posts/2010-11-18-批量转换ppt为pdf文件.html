@@ -23,22 +23,25 @@ comments: true
 
 <p>下面的方法主要用于装有openoffice的Linux平台下。Windows也是可以的，方法在上面那个网站上有说明。<br />
 首先，让openoffice运行成一个后台服务器，监听一个socket。
-<pre lang="bash">
+``` bash
 soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard
-</pre></p>
+```
+</p>
 
 <p>假设下载的是DocumentConverter.py，编辑这个文件，在最开始插入一行注释：
-<pre lang="bash">
+``` bash
 #!/usr/bin/env python
-</pre>
+```
 然后让其可运行
-<pre lang="bash">
+``` bash
 chmod +x DocumentConverter.py
-</pre></p>
+```
+</p>
 
 <p>现在可以开始进行批处理了。假设cd到一个有ppt的目录下，运行以下命令进行处理：
-<pre lang="bash">
+``` bash
 for i in `ls *.ppt` ;do DocumentConverter.py $i `echo $i | sed 's/.ppt/.pdf/'`  ; done;
-</pre></p>
+```
+</p>
 
 <p>Ubuntu完美运行。</p>

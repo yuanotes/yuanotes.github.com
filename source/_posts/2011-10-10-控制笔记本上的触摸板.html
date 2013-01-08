@@ -19,15 +19,16 @@ comments: true
 <p>为打开和关闭触摸板写一个脚本文件，然后通过快捷键绑定这个脚本文件，很明白了吧？</p>
 
 <p><strong>1. 找到你的触摸板的设备名称</strong>
-<pre lang="bash">xinput list</pre></p>
+``` bash
+xinput list
+```</p>
 
 <p>一般名称是包含<code>PS/2</code> 这种字符的，比如我的触摸板设备名称就是<code>ImPS/2 ALPS GlidePoint</code>。</p>
 
 <p><strong>2. 新建一个文件，随便叫什么名字，这个文件是一个shell脚本，可以执行的。</strong>
 内容如下：
-<pre lang="bash" /></p>
-
-<p>#!/bin/bash<br />
+``` bash
+#!/bin/bash<br />
 enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.\+1$"`</p>
 
 <p>if [ -n "$enabled" ]; then<br />
@@ -35,6 +36,7 @@ enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.
 else<br />
     xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 1<br />
 fi
+```
 </p>
 
 <p>意思很清楚，就是通过<code>xinput</code>来判断触摸板设备是否开启，如果开启则给 <code>$enabled</code>赋一个值，否则该变量就是空。</p>
@@ -50,11 +52,13 @@ fi
 这里的<code>psmouse</code>就是触摸板的模块名称了。</p>
 
 <p>启动：
-<pre lang="bash">
+``` bash
 sudo modprobe psmouse
-</pre></p>
+```
+</p>
 
 <p>关闭：
-<pre lang="bash">
+``` bash
 sudo rmmod psmouse
-</pre></p>
+```
+</p>

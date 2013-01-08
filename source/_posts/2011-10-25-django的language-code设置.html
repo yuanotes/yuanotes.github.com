@@ -14,14 +14,15 @@ comments: true
 <p>但是有个很严重的问题。那就是在<code>locale</code>这个目录下的目录名称跟<code>LANGUAGE_CODE</code>是不一样的。</p>
 
 <p>在<code>settings.py</code>设置的中文是:
-<pre lang="python">
+``` python
 LANGUAGE_code = 'zh-cn'
-</pre></p>
+```
+</p>
 
 <p>但是<code>locale</code>下的中文语言目录名称却不能和它一样，必须设置成<code>zh_CN</code>，至少在我的服务器上是如此，可能跟系统的<code>locale</code>有关系。</p>
 
 <p>Django官方没找到这方面的文档，因为
-<pre lang="python">
+``` python
 python manage.py makemessages -a
-</pre>
+```
 会自动设置目录名称，这个问题并不多见。</p>

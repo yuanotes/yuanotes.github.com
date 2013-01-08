@@ -24,7 +24,9 @@ comments: true
 <p>这个正则表达式非常复杂，至少我自己是这么认为的，惨不忍睹……</p>
 
 <p>vim命令：
-<pre lang="vim">%s/\(\s<b>\s\)\@<=\(\(\h\)\w\+\)\(.\+\)\(<font\)/\2\4<bgsound src="”file:\/\/\/e:\/supermemo\/speech\/langwen2005updated_American\/\3\/\2.mp3″" loop="TRUE">\5/gc</bgsound></b></pre>
+``` vim
+%s/\(\s<b>\s\)\@<=\(\(\h\)\w\+\)\(.\+\)\(<font\)/\2\4<bgsound src="”file:\/\/\/e:\/supermemo\/speech\/langwen2005updated_American\/\3\/\2.mp3″" loop="TRUE">\5/gc</bgsound></b>
+```
 我的音频文件放在E:/supermemo/speech/langwen2005updated_American文件夹下。</p>
 
 <p>一次次按完Y之后，发现基本正确，然后就直接按A了。接下来VIM处于“无响应的状态”，等一会儿就都好了。</p>

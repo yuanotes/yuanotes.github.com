@@ -15,13 +15,20 @@ comments: true
 
 <p>首先备份一下interfaces文件</p>
 
-<p><pre lang="bash">
+<p>
+``` bash
 cd /etc/network
-sudo cp interfaces interfaces~</pre></p>
+sudo cp interfaces interfaces~
+```
+</p>
 
 <p>修改interfaces，只留下两行。</p>
 
-<p><pre lang="text">auto lo
-iface lo inet loopback</pre></p>
+<p>
+```
+auto lo
+iface lo inet loopback
+```
+</p>
 
 <p>重启。</p>

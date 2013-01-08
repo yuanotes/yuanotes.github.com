@@ -12,17 +12,33 @@ comments: false
 
 <p>我的网卡是intel wifi 3945，装好之后怎么都不能上无限网。<br />
 提示
-<pre lang="bash">SIOCSIFFLAGS: Operation not possible due to RF-kill</pre>。</p>
+``` bash
+SIOCSIFFLAGS: Operation not possible due to RF-kill
+```
+。</p>
 
 <p>在论坛上无意中淘到了一个办法，安装rfkill。
-<pre lang="bash">sudo pacman -S rfkill</pre></p>
+``` bash
+sudo pacman -S rfkill
+```
+</p>
 
 <p>然后通过以下命令查看。
-<pre lang="bash">rfkill list</pre></p>
+``` bash
+rfkill list
+```
+</p>
 
 <p>然后试一下以下命令，也就是解封的意思，后面的数字可能是 0 1 2 3
-<pre lang="bash">sudo rfkill unblock 0</pre></p>
+``` bash
+sudo rfkill unblock 0
+```
+</p>
 
 <p>如果没问题，应该就OK了。<br />
-用<pre lang="bash">sudo ifconfig wlan0 up</pre>测试一下。
+用
+``` bash
+sudo ifconfig wlan0 up
+```
+测试一下。
 </p>

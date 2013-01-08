@@ -20,16 +20,19 @@ comments: true
 <p>好在django默认建立的project的settings.py文件中有MEDIA_ROOT，MEDIA_URL等选项。去网上搜索了一把，找到了<a href="http://twigstechtips.blogspot.com/2009/08/django-how-to-serve-media-files-css.html">一篇文章</a>（墙外），差不多可以解决这个问题。虽然，貌似没有staticfiles神马的用起来方便。</p>
 
 <p>首先，在settings.py文件中定义（以下代码都是写文章时候手打的，如有错误请留言指正）
-<pre lang="python">
+``` python
 MEDIA_ROOT=os.path.join(os.path.dirname(__file__),'media').replace('\\','/') #如果是*nix系统，不需要replace函数
 MEDIA_URL='/media/' #末尾一定要加上/
 ADMIN_MEDIA_PREFIX = '/media/admin/' #填啥都可以，就是不能跟MEDIA_URL一样
-</pre></p>
+```
+</p>
 
 <p>然后，在urls.py文件中：
-<pre lang="python">
+``` python
 from django.views.static import * 
-from django.conf import settings</pre></p>
+from django.conf import settings
+```
+</p>
 
 <p>#...<br />
 #以下是urlpatterns中的<br />
@@ -40,8 +43,9 @@ from django.conf import settings</pre></p>
 仅仅输入 yourdomain.com/media/ 是看不到任何东西的。</p>
 
 <p>最后，如果没有什么问题，那么，在template的html文件中，可以直接这么调用css以及image等文件啦，
-<pre lang="html">
+``` html
 <link rel="stylesheet" type="text/css" href="/media/css/default.css" />
-</pre></p>
+```
+</p>
 
 <p></p>

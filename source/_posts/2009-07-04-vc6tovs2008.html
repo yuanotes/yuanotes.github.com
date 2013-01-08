@@ -19,17 +19,21 @@ comments: true
 
 <p>最后的问题就是比较让人纠结的了，执行出现类似如下错误：</p>
 
-<p><pre lang="text">
+<p>
+```
 Error  179  error C2248: std::basic_ios _Elem,_Traits::basic_ios : cannot access private member declared in class std::basic_ios _Elem,_Traits c:\program files\microsoft visual studio 8\vc\include\fstream 802
-</pre>
+```
 这个问题在MSDN上有人提出，但是没人给出答案。我查到了CSDN上，发现也有人出现类似错误，贴下他的出错的代码。</p>
 
-<p><pre lang="cpp" line="1">
+<p>
+``` cpp
 #include <iostream>
 #include <fstream>
 int main(int argc, char* argv[])
 {
-    using namespace std;</fstream></iostream></pre></p>
+    using namespace std;</fstream></iostream>
+```
+</p>
 
 <p>    ( argc > 2<br />
         ? ofstream(argv[2],ios::out|ios::binary)<br />
@@ -45,7 +49,7 @@ int main(int argc, char* argv[])
 </p>
 
 <p>CSDN上没人给出好的答案，后来他自己结贴了并给出了修改后的代码。
-<pre lang="cpp" line="1">
+``` cpp
 #include <iostream>
 #include <fstream>
 int main(int argc, char* argv[])
@@ -54,7 +58,9 @@ int main(int argc, char* argv[])
     (*( argc > 2
         ? &ofstream(argv[2],ios::out|ios::binary)
         :&cout
-        )) <<</fstream></iostream></pre></p>
+        )) <<</fstream></iostream>
+```
+</p>
 
 <p>        (*( argc >  1<br />
         ? &ifstream(argv[1],ios::in|ios::binary)<br />
