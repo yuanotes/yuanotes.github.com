@@ -4,7 +4,7 @@
   <title><![CDATA[谋定而后动]]></title>
   <link href="http://yuanotes.github.com/atom.xml" rel="self"/>
   <link href="http://yuanotes.github.com/"/>
-  <updated>2012-10-12T00:28:42+08:00</updated>
+  <updated>2013-01-09T12:41:01+08:00</updated>
   <id>http://yuanotes.github.com/</id>
   <author>
     <name><![CDATA[Brooklyn]]></name>
@@ -12,23 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[保持工作环境的纯洁性]]></title>
-    <link href="http://yuanotes.github.com/blog/2012/10/12/new-post/"/>
-    <updated>2012-10-12T00:17:00+08:00</updated>
-    <id>http://yuanotes.github.com/blog/2012/10/12/new-post</id>
-    <content type="html"><![CDATA[<p>刚才在外刊IT评论上看到一片文章，《办公桌前不做四件事》，大致意思就是不在办公桌前做与办公无关的事情，甚至是思考。作者也提倡站着办公，这样能够轻松的走出办公的环境，或者避免自己整天站着。</p>
-
-<p>这样可以保持工作环境的纯洁性。因为坐在那里就是心无旁骛的工作，而不是刷微博，上QQ，或者发呆的。但是我目前的工作环境比较嘈杂，无法让我去体验这种习惯。</p>
-
-<p>很多人在写作或者其它创作的事情，都有自己固定以及私密的空间，这样当他们进入这个空间，就会习惯性的进入工作状态，而不被打扰，也不会让自己失去注意力。</p>
-
-<p>很多人，包括我自己在内，在一个地方呆很久，都容易走神。换一个新的安静的环境，就能在那个环境继续专注的工作。然而，如果我不把这个环境和外界隔绝开，那么我很容易进入以前注意力分散的那种状态。</p>
-
-<p>这是一种习惯，或者，是一种条件反射吧。</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[2011年的一点总结]]></title>
@@ -86,7 +69,9 @@
 	<li><strong>[optional]</strong>dotepub默认会去掉网页中的链接，也就是说，会去掉那些小节的标题。我们当然想看到标题了。根据dotepub的描述，去掉immersive选项就可以了。但是在我这里，他们提供的chrome插件是有问题的，我用的是书签。总是，我下载的文件，那些标题都没有了。</li></ol></p>
 
 <p>我用的办法是，在chrome里面执行：
-<pre lang="javascript">$('h2').each(function(){var t=$('a',this).text();$(this).text(t);})</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;h2&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="kd">var</span> <span class="nx">t</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">t</span><span class="p">);})</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </p>
 
@@ -112,30 +97,6 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Django的language code设置]]></title>
-    <link href="http://yuanotes.github.com/blog/2011/10/25/django%E7%9A%84language-code%E8%AE%BE%E7%BD%AE/"/>
-    <updated>2011-10-25T00:00:00+08:00</updated>
-    <id>http://yuanotes.github.com/blog/2011/10/25/django的language-code设置</id>
-    <content type="html"><![CDATA[<p>如果需要给Django设置中文i18n，在settings.py里面设置<code>LANGUAGE_CODE = 'zh-cn'</code> 即可。</p>
-
-<p>但是有个很严重的问题。那就是在<code>locale</code>这个目录下的目录名称跟<code>LANGUAGE_CODE</code>是不一样的。</p>
-
-<p>在<code>settings.py</code>设置的中文是:
-<pre lang="python">
-LANGUAGE_code = 'zh-cn'
-</pre></p>
-
-<p>但是<code>locale</code>下的中文语言目录名称却不能和它一样，必须设置成<code>zh_CN</code>，至少在我的服务器上是如此，可能跟系统的<code>locale</code>有关系。</p>
-
-<p>Django官方没找到这方面的文档，因为
-<pre lang="python">
-python manage.py makemessages -a
-</pre>
-会自动设置目录名称，这个问题并不多见。</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[控制笔记本上的触摸板]]></title>
     <link href="http://yuanotes.github.com/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/"/>
     <updated>2011-10-10T00:00:00+08:00</updated>
@@ -149,22 +110,31 @@ python manage.py makemessages -a
 <p>为打开和关闭触摸板写一个脚本文件，然后通过快捷键绑定这个脚本文件，很明白了吧？</p>
 
 <p><strong>1. 找到你的触摸板的设备名称</strong>
-<pre lang="bash">xinput list</pre></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>xinput list
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>一般名称是包含<code>PS/2</code> 这种字符的，比如我的触摸板设备名称就是<code>ImPS/2 ALPS GlidePoint</code>。</p>
 
 <p><strong>2. 新建一个文件，随便叫什么名字，这个文件是一个shell脚本，可以执行的。</strong>
 内容如下：
-<pre lang="bash" /></p>
-
-<p>#!/bin/bash<br />
-enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.\+1$"`</p>
-
-<p>if [ -n "$enabled" ]; then<br />
-    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 0<br />
-else<br />
-    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 1<br />
-fi
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash&lt;br /&gt;</span>
+</span><span class='line'><span class="nv">enabled</span><span class="o">=</span><span class="sb">`</span>xinput --list-props <span class="s2">&quot;ImPS/2 ALPS GlidePoint&quot;</span> | grep -e <span class="s2">&quot;Device Enabled.\+1$&quot;</span><span class="sb">`</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if <span class="o">[</span> -n <span class="s2">&quot;$enabled&quot;</span> <span class="o">]</span>; <span class="k">then</span>&lt;br /&gt;
+</span><span class='line'>    xinput --set-prop <span class="s2">&quot;ImPS/2 ALPS GlidePoint&quot;</span> <span class="s2">&quot;Device Enabled&quot;</span> 0&lt;br /&gt;
+</span><span class='line'><span class="k">else</span>&lt;br /&gt;
+</span><span class='line'>    xinput --set-prop <span class="s2">&quot;ImPS/2 ALPS GlidePoint&quot;</span> <span class="s2">&quot;Device Enabled&quot;</span> 1&lt;br /&gt;
+</span><span class='line'><span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure>
 </p>
 
 <p>意思很清楚，就是通过<code>xinput</code>来判断触摸板设备是否开启，如果开启则给 <code>$enabled</code>赋一个值，否则该变量就是空。</p>
@@ -180,14 +150,16 @@ fi
 这里的<code>psmouse</code>就是触摸板的模块名称了。</p>
 
 <p>启动：
-<pre lang="bash">
-sudo modprobe psmouse
-</pre></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo modprobe psmouse
+</span></code></pre></td></tr></table></div></figure>
+</p>
 
 <p>关闭：
-<pre lang="bash">
-sudo rmmod psmouse
-</pre></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo rmmod psmouse
+</span></code></pre></td></tr></table></div></figure>
+</p>
 ]]></content>
   </entry>
   
@@ -213,26 +185,25 @@ sudo rmmod psmouse
 <p>为了方便，我放几张图做个对比：</p>
 
 <p>最初的一些图片（素描）：
-<a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Drawing3Spoon.jpg"><img class="size-medium wp-image-25476 alignnone" title="Drawing3Spoon" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Drawing3Spoon-300x197.jpg" alt="" width="300" height="197" /></a></p>
+<a href="http://chen-yuan.me/wordpress/wp-content/uploads/2011/09/Drawing3Spoon.jpg"><img class="size-medium wp-image-25476 alignnone" title="Drawing3Spoon" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Drawing3Spoon-300x197.jpg" alt="" width="300" height="197" /></a></p>
 
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/DrawingNumber2Candle.jpg"><img class="size-medium wp-image-25477 alignnone" title="DrawingNumber2Candle" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/DrawingNumber2Candle-300x253.jpg" alt="" width="300" height="253" /></a></p>
+<p><a href="http://chen-yuan.me/wordpress/wp-content/uploads/2011/09/DrawingNumber2Candle.jpg"><img class="size-medium wp-image-25477 alignnone" title="DrawingNumber2Candle" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/DrawingNumber2Candle-300x253.jpg" alt="" width="300" height="253" /></a></p>
 
 <p>最初的一些图片（绘画）：
-<a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PinkBallpainting10.jpg"><img class="size-medium wp-image-25482 alignnone" title="PinkBallpainting10" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PinkBallpainting10-235x300.jpg" alt="" width="235" height="300" /></a></p>
+<a href="http://chen-yuan.me/wordpress/wp-content/uploads/2011/09/PinkBallpainting10.jpg"><img class="size-medium wp-image-25482 alignnone" title="PinkBallpainting10" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PinkBallpainting10-235x300.jpg" alt="" width="235" height="300" /></a></p>
 
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PaintingNumber9GreenCylinder.jpg"><img class="size-medium wp-image-25480 alignnone" title="PaintingNumber9GreenCylinder" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PaintingNumber9GreenCylinder-235x300.jpg" alt="" width="235" height="300" /></a></p>
+<p><a href="http://chen-yuan.me/wordpress/wp-content/uploads/2011/09/PaintingNumber9GreenCylinder.jpg"><img class="size-medium wp-image-25480 alignnone" title="PaintingNumber9GreenCylinder" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PaintingNumber9GreenCylinder-235x300.jpg" alt="" width="235" height="300" /></a></p>
 
 <p>最近的一些图片（素描）：</p>
 
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/summerflowers_websize.jpg"><img class="size-medium wp-image-25484 alignnone" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/summerflowers_websize-206x300.jpg" alt="" width="206" height="300" /></a></p>
+<p><a href="http://chen-yuan.me/wordpress/wp-content/uploads/2011/09/summerflowers_websize.jpg"><img class="size-medium wp-image-25484 alignnone" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/summerflowers_websize-206x300.jpg" alt="" width="206" height="300" /></a></p>
 
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Julie_websize.jpg"><img class="alignnone size-medium wp-image-25478" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Julie_websize-300x246.jpg" alt="" width="300" height="246" /></a></p>
-
+<p><a href="http://chen-yuan.me/wordpress/wp-content/uploads/2011/09/Julie_websize.jpg"><img class="alignnone size-medium wp-image-25478" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Julie_websize-300x246.jpg" alt="" width="300" height="246" /></a></p>
 <p>最近的一些图片（绘画）：</p>
 
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Step-15-Finished_Varnished_websize.jpg"><img class="alignnone size-medium wp-image-25483" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Step-15-Finished_Varnished_websize-180x300.jpg" alt="" width="180" height="300" /></a></p>
+<p><a href="http://chen-yuan.me/wordpress/wp-content/uploads/2011/09/Step-15-Finished_Varnished_websize.jpg"><img class="alignnone size-medium wp-image-25483" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Step-15-Finished_Varnished_websize-180x300.jpg" alt="" width="180" height="300" /></a></p>
 
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/the_letter_small.jpg"><img class="alignnone size-thumbnail wp-image-25485" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/the_letter_small-150x150.jpg" alt="" width="150" height="150" /></a></p>
+<p><a href="http://chen-yuan.me/wordpress/wp-content/uploads/2011/09/the_letter_small.jpg"><img class="alignnone size-thumbnail wp-image-25485" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/the_letter_small-150x150.jpg" alt="" width="150" height="150" /></a></p>
 
 <p>另外，有人把他所有的图片都抓取下来，可以打包下载（墙外）：https://s3.amazonaws.com/markerdmann.com/paintings.tar</p>
 
@@ -282,49 +253,6 @@ sudo rmmod psmouse
 <p>以前我错误的理解了<code> . </code> 的含义，我觉得<code>a.*b</code>可以匹配 <code>ab</code>也可以匹配<code>acccccccccccccb</code>，这是我的理解，只能匹配<strong>一个字符0次或者任意次</strong>，当我发现还可以匹配 <code>acdeerwb</code>的时候我就没弄清楚到底是怎么匹配的。这种稀里糊涂的精神最要不得。</p>
 
 <p>现在通过<code>.*</code>和<code>.*?</code>可以明白了，<code>.</code>是匹配任意字符没错，但是却不是一个固定不变的字符，<code>*</code>表示前面的元素是0个或者任意多个，那么 <code>.*?</code>就表示<code>?</code>前面的那个任意字符，只能出现一次或者0次，出现多次就不匹配，这就恰好是我们需要的避免贪婪匹配。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Django中model空值表示]]></title>
-    <link href="http://yuanotes.github.com/blog/2011/09/13/django%E4%B8%ADblanktrue%E4%BB%A5%E5%8F%8Anulltrue/"/>
-    <updated>2011-09-13T00:00:00+08:00</updated>
-    <id>http://yuanotes.github.com/blog/2011/09/13/django中blanktrue以及nulltrue</id>
-    <content type="html"><![CDATA[<p>在django的model.py中有个很奇怪的地方，那就是设置一个可以为空的值时，有一个blank=True为什么还需要一个null=True呢？</p>
-
-<p>官方文档这么解释这个问题：
-<ol>
-	<li>blank主要是用来验证的，也就是用作ModelForm的时候验证用户的输入，如果不是用户输入甚至可以免掉blank=True(我自己还没有验证，一般都加上)。</li>
-	<li>null主要是基于数据库层面的，也就是是否可以在数据库里面存储空值(NULL)。</li>
-	<li>另外，除了oracle的数据库之外，string的field如CharField和TextField存在数据库里的都是empty string，这是django为了给string的field寻求一个统一的空值。</li>
-</ol></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Django的blocktrans语法]]></title>
-    <link href="http://yuanotes.github.com/blog/2011/09/13/blocktrans/"/>
-    <updated>2011-09-13T00:00:00+08:00</updated>
-    <id>http://yuanotes.github.com/blog/2011/09/13/blocktrans</id>
-    <content type="html"><![CDATA[<p>官方文档的blocktrans的的标签在django1.2.5和1.3中不一太一样。</p>
-
-<p>blocktrans的标签中中不支持访问变量名的属性以及list或者dict的成员，也就是user.email这种写法是不允许的。</p>
-
-<p>文档中实例代码是这样的，这种在1.2.5中不支持，但是在1.3中是支持的：
-<pre lang="html">
-{% blocktrans with amount=article.price count years=i.length %}
-...
-{% endblocktrans %}
-</pre></p>
-
-<p>在1.2.5中必须用老的语法：
-<pre lang="html">
-{% blocktrans with article.price as amount count i.length as year %}
-..
-{% endblocktrans %}
-</pre></p>
-
-<p>另外，老的语法中,with A as B [and C as D] 中的 and 不能跟count写在一起。可以理解为count和with是两个单独的函数，只能并列放着，我没有看源代码，只是个人理解。新版本的新语法比较简洁，如果没有必要一定要守着1.2.5的话，升到1.3还是不错的。</p>
 ]]></content>
   </entry>
   
@@ -393,50 +321,6 @@ sudo rmmod psmouse
 <p>再次感谢阅读给我带来的好处，感谢身边朋友对我的宽容和耐心。我真幸运。</p>
 
 <p>PS:文章好久之前就写了，一直忘了发。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Django如何管理静态文件]]></title>
-    <link href="http://yuanotes.github.com/blog/2011/03/28/django%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86css%E7%AD%89%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/"/>
-    <updated>2011-03-28T00:00:00+08:00</updated>
-    <id>http://yuanotes.github.com/blog/2011/03/28/django如何管理css等静态文件</id>
-    <content type="html"><![CDATA[<p>Django的template确实很强大，但是我们不可能把CSS文件也嵌入到template中。</p>
-
-<p>但是CSS又不能简单的放在template目录下让template调用，因为django的目录结构是由urls.py这个文件来指定的，凡是没有指定的路径，外界都不能访问。</p>
-
-<p>所以，最好的办法，是指定一个目录，该目录下所有的文件都能够被匿名用户访问。</p>
-
-<p>虽然django的官方文档很详细，但是，一般人还是很难看懂其中staticfiles app到底是在扯什么东西。</p>
-
-<p>好在django默认建立的project的settings.py文件中有MEDIA_ROOT，MEDIA_URL等选项。去网上搜索了一把，找到了<a href="http://twigstechtips.blogspot.com/2009/08/django-how-to-serve-media-files-css.html">一篇文章</a>（墙外），差不多可以解决这个问题。虽然，貌似没有staticfiles神马的用起来方便。</p>
-
-<p>首先，在settings.py文件中定义（以下代码都是写文章时候手打的，如有错误请留言指正）
-<pre lang="python">
-MEDIA_ROOT=os.path.join(os.path.dirname(__file__),'media').replace('\\','/') #如果是*nix系统，不需要replace函数
-MEDIA_URL='/media/' #末尾一定要加上/
-ADMIN_MEDIA_PREFIX = '/media/admin/' #填啥都可以，就是不能跟MEDIA_URL一样
-</pre></p>
-
-<p>然后，在urls.py文件中：
-<pre lang="python">
-from django.views.static import * 
-from django.conf import settings</pre></p>
-
-<p>#&#8230;<br />
-#以下是urlpatterns中的<br />
-(r&#8217;^media/(?P<path>.*)$&#8217;, &#8216;django.views.static.serve&#8217;, {&#8216;document_root&#8217;: settings.MEDIA_ROOT}),
-</path></p>
-
-<p>做完这些之后，测试一下 yourdomain.com/media/default.css<br />
-仅仅输入 yourdomain.com/media/ 是看不到任何东西的。</p>
-
-<p>最后，如果没有什么问题，那么，在template的html文件中，可以直接这么调用css以及image等文件啦，
-<pre lang="html">
-<link rel="stylesheet" type="text/css" href="http://yuanotes.github.com/media/css/default.css" />
-</pre></p>
-
-<p></p>
 ]]></content>
   </entry>
   
@@ -528,23 +412,26 @@ from django.conf import settings</pre></p>
 
 <p>下面的方法主要用于装有openoffice的Linux平台下。Windows也是可以的，方法在上面那个网站上有说明。<br />
 首先，让openoffice运行成一个后台服务器，监听一个socket。
-<pre lang="bash">
-soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard
-</pre></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>soffice -headless -accept<span class="o">=</span><span class="s2">&quot;socket,host=127.0.0.1,port=8100;urp;&quot;</span> -nofirststartwizard
+</span></code></pre></td></tr></table></div></figure>
+</p>
 
 <p>假设下载的是DocumentConverter.py，编辑这个文件，在最开始插入一行注释：
-<pre lang="bash">
-#!/usr/bin/env python
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span></code></pre></td></tr></table></div></figure>
 然后让其可运行
-<pre lang="bash">
-chmod +x DocumentConverter.py
-</pre></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>chmod +x DocumentConverter.py
+</span></code></pre></td></tr></table></div></figure>
+</p>
 
 <p>现在可以开始进行批处理了。假设cd到一个有ppt的目录下，运行以下命令进行处理：
-<pre lang="bash">
-for i in `ls *.ppt` ;do DocumentConverter.py $i `echo $i | sed 's/.ppt/.pdf/'`  ; done;
-</pre></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">for </span>i in <span class="sb">`</span>ls *.ppt<span class="sb">`</span> ;<span class="k">do </span>DocumentConverter.py <span class="nv">$i</span> <span class="sb">`</span><span class="nb">echo</span> <span class="nv">$i</span> | sed <span class="s1">&#39;s/.ppt/.pdf/&#39;</span><span class="sb">`</span>  ; <span class="k">done</span>;
+</span></code></pre></td></tr></table></div></figure>
+</p>
 
 <p>Ubuntu完美运行。</p>
 ]]></content>
@@ -638,6 +525,100 @@ And the world will live as one.</p>
 <p>再次，我插入电源，电压充足，不漂移。</p>
 
 <p>最后，我用SetCPU限制USB充电时候的电压，手机需求电压降低，不漂移。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Ghost Writer]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/10/03/the-ghost-writer/"/>
+    <updated>2010-10-03T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/10/03/the-ghost-writer</id>
+    <content type="html"><![CDATA[<p><a href="http://movie.douban.com/subject/3120852/"><img style="float: left; padding: 0 20px 20px 0; border: 0;" src="http://img3.douban.com/lpic/s4149033.jpg" alt="" /></a>看的是无字幕版，没有勇气去精读一遍字幕了……</p>
+
+<p>其实我应该去精读一遍然后再看一遍无字幕版，英语听力不行啊，特别是英式发音。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[evince显示中文pdf乱码]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/10/03/evince%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87pdf%E4%B9%B1%E7%A0%81/"/>
+    <updated>2010-10-03T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/10/03/evince显示中文pdf乱码</id>
+    <content type="html"><![CDATA[<p>在gnome里面，evince算是比较小巧的pdf阅读器了，相比于adobe reader以及xpdf这些臃肿又不美观的东西。</p>
+
+<p>但是evince显示某些pdf的时候，中文是乱码或者干脆什么都没有，有个很简单的办法解决这个问题，安装poppler-data就可以了。</p>
+
+<p>Ubuntu直接运行：
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install poppler-data
+</span></code></pre></td></tr></table></div></figure>
+</p>
+
+<p>如果还不行，那么试试这个：
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install cmap-adobe-cns1 cmap-adobe-gb1 gs-cjk-resource
+</span></code></pre></td></tr></table></div></figure>
+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[标题党形成的原因]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/09/27/%E6%A0%87%E9%A2%98%E5%85%9A%E5%BD%A2%E6%88%90%E7%9A%84%E5%8E%9F%E5%9B%A0/"/>
+    <updated>2010-09-27T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/09/27/标题党形成的原因</id>
+    <content type="html"><![CDATA[<p><p>我们看新闻的时候常常会发现&#8221;文不对题&#8221;，就是文章的内容和标题不是一个意思，而且往往是标题比较夸大。这一般就是我们俗称的&#8221;标题党&#8221;。</p>
+<p>然而，我还发现一个问题，那就是本该有好的标题的好文章都没有一个醒目的标题来吸引读者。google reader 上的文章就经常出现这种情况。很多很好的博文都被我忽略了，仅仅就是因为其标题毫无新意或者不够吸引眼球。</p>
+<p>从这点来看，我觉得主要问题可能是：那些写博客的作者们并不像写新闻稿的那些记者们在乎是否有读者读他们的文章。很多习惯拟夸张标题的作者都习惯如此吸引眼球或者他们在作文课上受过专业的指导。</p>
+<p>一般人，一般的中国人大多都不会拟标题的。因为我们并没有受过专业的指导或者培训，而中小学时期的作文的标题，都是老师拟好的。或者，让学生自由命题但是题目占分比重不大。我深以为中小学的作文课不仅要教会学生写文章，还要教会他们写醒目的标题。</p>
+<p>然而，基于拟标题水平有差别，而读者在乎的内容又隐藏在标题之下，我觉得，一般的内容平台，最好不要只显示标题给读者让他们筛选，除非作者自信读者能够无聊到&#8221;烂新闻&#8221;也点击或者作者的标题够吸引人。放个文章摘要，图片什么的或者干脆不要隐藏全文也好。</p>
+<p>其实，我们喜欢看醒目的标题跟我们本身也有关系。我们不仅只看好标题的文章，我们还只喜欢外观气质出众的人。我们只注重第一印象，只注重事务的外表，我们喜欢刺激，我们不喜欢枯燥，我们不喜欢观察，不喜欢细节，而且没有耐心，不敢尝试。</p>
+<p>这些都是我们的缺点，这个时代赋予了我们这些缺点。</p>
+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[杂事，以及Ubuntu 10.10]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/09/27/%E6%9D%82%E4%BA%8B%EF%BC%8C%E4%BB%A5%E5%8F%8Aubuntu-10-10/"/>
+    <updated>2010-09-27T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/09/27/杂事，以及ubuntu-10-10</id>
+    <content type="html"><![CDATA[<p>好久没写东西了。</p>
+
+<p>最近我觉得自己挺忙的，但是至于都在做什么我又说不出个所以然出来，只知道自己围着一堆事情在转悠。</p>
+
+<p>有些事情以前没有认真对待，现在发现为时已晚了。9月份就这么过去了，想起那首歌Wake Me Up When September Ends，还真像那么回事。</p>
+
+<p>已经要到10月份了，那么Ubuntu 10.10是要发布了。</p>
+
+<p>于是心血来潮，把电脑上的10.04升级到10.10，期间因为gnome-shell，出了点小问题，不过好在问题不大，升级过程还算顺利。</p>
+
+<p>新的版本变化我还没感觉出来，不过界面已经有了变化，而且壁纸也新添加了几张。不过仅仅界面的改变是没什么新意的，因为过不了多久就会看腻了的。将界面变成一种文化才是最重要的，像苹果那样。</p>
+
+<p>不过，新的界面看起来确实很舒服。</p>
+
+<p>时间过得如此之快，上次升级10.04还好像在昨天。</p>
+
+<p>而我的梦想又如此不现实，真是让人蛋疼的生活和蛋疼的自己。</p>
+
+<p>PS: wordpress也是越来越完善了，时间过得真快……</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[可视化预览编辑fonts.conf]]></title>
+    <link href="http://yuanotes.github.com/blog/2010/09/27/%E5%8F%AF%E8%A7%86%E5%8C%96%E9%A2%84%E8%A7%88%E7%BC%96%E8%BE%91fonts-conf/"/>
+    <updated>2010-09-27T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2010/09/27/可视化预览编辑fonts-conf</id>
+    <content type="html"><![CDATA[<p>刚刚将Lucid升级到Maverick，发现无论是中文还是英文界面，中文字体总是看不顺眼。</p>
+
+<p>去文泉驿网站淘了看，发现没有新字体或者什么新版本放出，但是却发现该网站给出了一个很好的工具，<a href="http://wenq.org/cloud/fcdesigner.html" target="_blank">Fontconfig Designer</a>，可以很方便的定制Linux下的字体。</p>
+
+<p>因为现在的发行版都是用的fontconfig来定义字体的优先级以及其它的一些样式，所以该页面生成了一个XML文件的源代码，将其拷到Home目录下的.fonts.conf文件中即可。</p>
+
+<p>如果是Archlinux或者Gentoo发行版，可能需要安装Ubuntu的fontconfig样式。</p>
+
+<p>总之，耍Linux嘛，总得自己鼓捣鼓捣。</p>
 ]]></content>
   </entry>
   

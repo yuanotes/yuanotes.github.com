@@ -9,7 +9,9 @@
   <meta name="author" content="Brooklyn">
 
   
-  <meta name="description" content="以前见过同学用Dell的笔记本电脑，触摸板都没有开关控制，好像一些联想的电脑也是这样。我觉得这样的电脑根本就没法用，打字经常出现莫名的鼠标干扰。 公司新发的Dell笔记本电脑，触摸板需要驱动来控制。Ubuntu下驱动可能出了问题，默认的按键应该是Fn+F5，但是按了之后却没有反映。 &hellip;">
+  <meta name="description" content="今天不知道为什么，可能是闲得慌，决定改动一下博客： 主题更改。
+很喜欢lixiaolai.com主题的字体，但是不能直接下载他的主题，就把wordpress 2011的字体改了一下，还行，像那么会事儿。 把主机迁移了一下。
+最早放在hostmonster上，速度一般，不快也不慢。放到AWS- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,167 +66,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/">控制笔记本上的触摸板</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-10T00:00:00+08:00" pubdate data-updated="true">Oct 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>以前见过同学用Dell的笔记本电脑，触摸板都没有开关控制，好像一些联想的电脑也是这样。我觉得这样的电脑根本就没法用，打字经常出现莫名的鼠标干扰。</p>
-
-<p>公司新发的Dell笔记本电脑，触摸板需要驱动来控制。Ubuntu下驱动可能出了问题，默认的按键应该是<code>Fn+F5</code>，但是按了之后却没有反映。</p>
-
-<p>在google中搜索之后，在askubuntu上找到了一个曲折的答案。</p>
-
-<p>为打开和关闭触摸板写一个脚本文件，然后通过快捷键绑定这个脚本文件，很明白了吧？</p>
-
-<p><strong>1. 找到你的触摸板的设备名称</strong>
-<pre lang="bash">xinput list</pre></p>
-
-<p>一般名称是包含<code>PS/2</code> 这种字符的，比如我的触摸板设备名称就是<code>ImPS/2 ALPS GlidePoint</code>。</p>
-
-<p><strong>2. 新建一个文件，随便叫什么名字，这个文件是一个shell脚本，可以执行的。</strong>
-内容如下：
-<pre lang="bash" /></p>
-
-<p>#!/bin/bash<br />
-enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.\+1$"`</p>
-
-<p>if [ -n "$enabled" ]; then<br />
-    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 0<br />
-else<br />
-    xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 1<br />
-fi
-</p>
-
-<p>意思很清楚，就是通过<code>xinput</code>来判断触摸板设备是否开启，如果开启则给 <code>$enabled</code>赋一个值，否则该变量就是空。</p>
-
-<p>接下来的执行就是，如果触摸板打开了，那么就关掉，如果关掉了那么就打开。</p>
-
-<p><strong>3.绑定快捷键</strong>
-给这个脚本绑定一个快捷键。<br />
-这一步，就是设置快捷键绑定这个脚本了。我的笔记本就是绑定的<code>Fn+F5</code>哦。<br />
-在绑定之前，可以在命令行里尝试一下是否有用，确保了能够正常开关的话，就可以了。</p>
-
-<p><strong>4.如果上面都走不通的话，不妨尝试通过内核模块来控制。</strong>
-这里的<code>psmouse</code>就是触摸板的模块名称了。</p>
-
-<p>启动：
-<pre lang="bash">
-sudo modprobe psmouse
-</pre></p>
-
-<p>关闭：
-<pre lang="bash">
-sudo rmmod psmouse
-</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/25/%E6%AF%8F%E5%A4%A9%E7%BB%83%E4%B9%A0%E7%94%BB%E7%94%BB%E5%9D%9A%E6%8C%819%E5%B9%B4%E4%B9%8B%E5%90%8E/">每天练习画画坚持9年之后</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-25T00:00:00+08:00" pubdate data-updated="true">Sep 25<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在02年9月15日，国外的一个艺术论坛<a href="http://www.conceptart.org/">http://www.conceptart.org</a>，一个家伙发了一个帖子：
-<blockquote>Hi Everyone,</blockquote></p>
-
-<p>If you didn&#8217;t see my last post(s) on <a href="http://www.conceptart.org/" target="_blank">www.conceptart.org</a> then I will bring you up to speed. Basically I have been inspired by the art produced and the work ethic of Jon Foster, Andrew Jones, Jason Manley, and my brother &#8220;Smeagol71&#8221; (among many others) and have decided to learn how to paint (primarily digitally). I am starting from rock bottom and I am going to paint at least one painting and do at least one sketch every day&#8230;probably two on the weekends. The order you see them in is the order that I am painting and/or sketching them&#8230;every day starting on 9/15/02. I am bearing my soul to everyone. I will post everything I do&#8230;whether it is awful or not. Most of the paintings and sketches, in the beginning, are going to look like crap but hopefully over the days/weeks/months/years they will start to get better. I have no formal art training but have signed up for classes this semester. I have a passion to paint and welcome any encouragement or critique that you want to give. Any feedback you want to give me you can leave in the threads I or just email me.</p>
-
-<p>Thanks
-意思我翻译一下（本人水平有限，请指正）：
-<blockquote>大家好，</blockquote></p>
-
-<p>如果你们以前没在 www.conceptart.org上我的帖子，你们可以通过这段文字对我有个了解。我很喜欢Jon Foster, Andrew Jones, Jason Manley和我哥哥 &#8220;Smeagol71&#8221;(还有其他许多人) 创作的艺术作品，于是我决定学会如何画画(主要是数码绘画)。我先从最基础的开始，每天至少一张绘画和至少一张速写，周末可能有两张。你们(在论坛)见到的帖子的顺序就是我画画的顺序，每天都有，从02年9月15号开始。希望大家能够做个见证。只要是我画的都会放上来，无论画得多么糟糕。大部分的绘画和速写在最开始都会很糟糕，但愿随着时间的推移，我画得会越来越好。我没有受过正规的绘画训练，但是这个学期已经报名参加一些课程。我有绘画的热情，欢迎大家给出鼓励和批评。如果你有什么建议可以回帖或者给我发邮件。</p>
-
-<p>谢谢
-论坛的地址是 <a href="http://www.conceptart.org/forums/showthread.php?t=870">http://www.conceptart.org/forums/showthread.php?t=870</a>，他是从02年9月15号开始，但是这个帖子是从21号开始的，前几天的零散的放在别的帖子里，不过没什么关系。各位看官可以去论坛里大致瞧瞧他最初的一些作品，对比一下近期，也就是2011年9月份左右的一些帖子，我相信你们会跟我一样震惊的。 他还有一个个人网站，放的是一些他最近的作品 <a href="http://www.jonathanhardesty.com/">http://www.jonathanhardesty.com</a></p>
-
-<p>为了方便，我放几张图做个对比：</p>
-
-<p>最初的一些图片（素描）：
-<a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Drawing3Spoon.jpg"><img class="size-medium wp-image-25476 alignnone" title="Drawing3Spoon" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Drawing3Spoon-300x197.jpg" alt="" width="300" height="197" /></a></p>
-
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/DrawingNumber2Candle.jpg"><img class="size-medium wp-image-25477 alignnone" title="DrawingNumber2Candle" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/DrawingNumber2Candle-300x253.jpg" alt="" width="300" height="253" /></a></p>
-
-<p>最初的一些图片（绘画）：
-<a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PinkBallpainting10.jpg"><img class="size-medium wp-image-25482 alignnone" title="PinkBallpainting10" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PinkBallpainting10-235x300.jpg" alt="" width="235" height="300" /></a></p>
-
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PaintingNumber9GreenCylinder.jpg"><img class="size-medium wp-image-25480 alignnone" title="PaintingNumber9GreenCylinder" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/PaintingNumber9GreenCylinder-235x300.jpg" alt="" width="235" height="300" /></a></p>
-
-<p>最近的一些图片（素描）：</p>
-
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/summerflowers_websize.jpg"><img class="size-medium wp-image-25484 alignnone" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/summerflowers_websize-206x300.jpg" alt="" width="206" height="300" /></a></p>
-
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Julie_websize.jpg"><img class="alignnone size-medium wp-image-25478" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Julie_websize-300x246.jpg" alt="" width="300" height="246" /></a></p>
-
-<p>最近的一些图片（绘画）：</p>
-
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Step-15-Finished_Varnished_websize.jpg"><img class="alignnone size-medium wp-image-25483" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/Step-15-Finished_Varnished_websize-180x300.jpg" alt="" width="180" height="300" /></a></p>
-
-<p><a href="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/the_letter_small.jpg"><img class="alignnone size-thumbnail wp-image-25485" title="OLYMPUS DIGITAL CAMERA" src="http://blog.chen-yuan.me/wordpress/wp-content/uploads/2011/09/the_letter_small-150x150.jpg" alt="" width="150" height="150" /></a></p>
-
-<p>另外，有人把他所有的图片都抓取下来，可以打包下载（墙外）：https://s3.amazonaws.com/markerdmann.com/paintings.tar</p>
-
-<p>还有视频（墙外）：https://s3.amazonaws.com/markerdmann.com/Paintings.mov</p>
-
-<p>在线视频（还是墙外）：http://vimeo.com/29510470</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -328,7 +169,7 @@ sudo rmmod psmouse
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/09/13/django%E4%B8%ADblanktrue%E4%BB%A5%E5%8F%8Anulltrue/">Django中model空值表示</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/08/01/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/">关于博客</a></h1>
     
     
       <p class="meta">
@@ -344,21 +185,148 @@ sudo rmmod psmouse
   
 
 
-<time datetime="2011-09-13T00:00:00+08:00" pubdate data-updated="true">Sep 13<span>th</span>, 2011</time>
+<time datetime="2011-08-01T00:00:00+08:00" pubdate data-updated="true">Aug 1<span>st</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>在django的model.py中有个很奇怪的地方，那就是设置一个可以为空的值时，有一个blank=True为什么还需要一个null=True呢？</p>
+  <div class="entry-content"><p>很久没有更新博客了。</p>
 
-<p>官方文档这么解释这个问题：
-<ol>
-	<li>blank主要是用来验证的，也就是用作ModelForm的时候验证用户的输入，如果不是用户输入甚至可以免掉blank=True(我自己还没有验证，一般都加上)。</li>
-	<li>null主要是基于数据库层面的，也就是是否可以在数据库里面存储空值(NULL)。</li>
-	<li>另外，除了oracle的数据库之外，string的field如CharField和TextField存在数据库里的都是empty string，这是django为了给string的field寻求一个统一的空值。</li>
-</ol></p>
+<p>有时候会想，写博客到底是为了什么？读了很多人的博客，如<a href="http://www.lixiaolai.com/">李笑来的博客</a>，<a href="http://www.ruanyifeng.com/blog/">阮一峰的博客</a>，以及<a href="http://rendaliuyu.blog.163.com/">刘瑜的博客</a>。他们的博文我几乎是每篇必读。</p>
+
+<p>博客可以传播思想，传播作者的思想。前提是该博客有一定数量的读者。当然，有人喜欢把博客用来当作日记本或者记事本用。</p>
+
+<p>我决定把自己的想法记录下来，这是一个需要坚持的过程。</p>
+
+<p>我想自己写一个博客程序代替wordpress，这次绝对不是一个完美主义者的程序员的幼稚想法。我从事的工作是网络应用开发，这样做可以让工作和兴趣之间取得一个平衡。</p>
+
+<p>我觉得自己每天都在成长，因为我每天都在思考。看了很多的文字、视频，想了很多的事情，却没有记录下来，这是一件比较遗憾的事情。</p>
+
+<p>从今天开始，坚持记录自己的想法，哪怕自己都觉得幼稚。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/05/%E4%BA%BA%E5%BE%88%E9%9A%BE%E5%8F%91%E7%8E%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BC%BA%E9%99%B7/">人很难发现自己的缺陷</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-05T00:00:00+08:00" pubdate data-updated="true">Apr 5<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>人，真的很难发现自己的错误，太困难了。</p>
+
+<p>这个社会，没人会当面指出别人的错误，喜欢指责别人的人是最不受欢迎的人。而且，没有人愿意让别人指出错误。</p>
+
+<p>偶尔发现自己有不对的地方，都不太想承认。</p>
+
+<p>如果是别人指出我的错误，那么我会非常愤怒。讽刺的是，我自认为我是一个相当开明的人，我认为我能够接受任何批评与指正，除非那些批评是错误的。</p>
+
+<p>但是，问题来了，我得到了很多人的批评，几乎没有一次我觉得他们说对了。谁说我我就跟谁翻脸，所幸身边的人都能够宽容我。而且，我还经常对我看不惯的人以及事物指手画脚，乱加评论。</p>
+
+<p>我的这些错误，我一直是不知道的。在此之前，我一直觉得，不能接受别人指正的人，都是刚愎自用的白痴。我觉得我是一个能够接受别人批评的正人君子。</p>
+
+<p>我发现这些问题之后，有种惊悚的感觉…</p>
+
+<p>我正在阅读卡内基的书，人性的弱点。当我尝试发现别人的优点的时候，愕然的发现，碰到每一个人，我首先想到的是他或者她的缺点，由此来产生优越感。</p>
+
+<p>我有种惊悚的感觉。我怎么是这么一个人！？！？我不是很有自信吗？我最讨厌的，就是谁谁谁贬低别人，以此来抬高自己。</p>
+
+<p>当我发现我并不是那么受欢迎的时候，我就发现了，问题是出在我身上的。但是我不知道这问题究竟是什么。</p>
+
+<p>首先，我脾气不好，一点小事我就暴跳如雷。我甚至觉得这是男人的本色。说实话，我最讨厌这种人，就像个小丑。</p>
+
+<p>其次，我喜欢抱怨，尤其习惯对着身边亲近的人抱怨。说实话，我瞧不起喜欢抱怨的人。</p>
+
+<p>再次，我喜欢指责别人，只要是我不喜欢的我都指责。是的，我最讨厌没事摆着个八婆脸，对别人指手画脚的人。</p>
+
+<p>其实，每个人都觉得自己是独一无二的，每个人都觉得，自己是比较完美的。如果一个人觉得自己一无是处，那么他或她，就不可能有任何自信，就不会有任何生产力，甚至离自杀不远了。而且，人们自己不完美的时候，往往习惯指责别人，来让自己产生完美的错觉。</p>
+
+<p>纵然本性如此，也有可以改善的地方。</p>
+
+<p>首先，听完别人的指责，不要大动肝火。我们可以不接受指责，但是不能轻易剥夺别人这种权利。因为，人，自己发觉自己的错误，实在是太难。有时候，别人指出错误，我们也难以发觉。</p>
+
+<p>其次，不要指责别人。没人愿意接受指责。我们可以要求自己接受指责，却不能要求别人也这么做。</p>
+
+<p>再次，要善于发现别人的优点，忽略他们的缺点。总是感受这个世界的阴暗面，活得该有多阴暗啊。而且，这么做，不利于交际。</p>
+
+<p>再次感谢阅读给我带来的好处，感谢身边朋友对我的宽容和耐心。我真幸运。</p>
+
+<p>PS:文章好久之前就写了，一直忘了发。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/01/24/%E7%9B%B8%E5%AF%B9%E7%9A%84%E7%94%9F%E6%B4%BB/">相对的生活</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-24T00:00:00+08:00" pubdate data-updated="true">Jan 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>枯燥和娱乐，是相辅相成的。这个世界，很多东西都是相对的。贫穷和富有是相对的，如果所有人都是穷人，那么所有的人就很富裕。</p>
+
+<p>寒假在家，最先的设想是很愉快的生活。然而，事实确实相反。这个，我早就应该预料到。因为去年暑假我就没有回家，我以为回家之后，生活会变得非常枯燥。</p>
+
+<p>这么充裕的时间，我居然会觉得无聊。这是一件不太正常的事情。</p>
+
+<p>回想以前，在高中的时候，课间休息时，能有一本杂志看，就是最大的快乐。放假的时候，能玩几个小时的游戏，就是最快乐的事情。然而，现在，那时候最快乐的事情，反而是我现在最不想做的事情。</p>
+
+<p>大三暑假我在一个软件公司实习一个月。那个月让我很讨厌工作，真的，每天准时上班，下班要到五点半，来去都要坐公交车，平时上班老板要求很多，这些束缚都让我受不了。然而，不得不说，那段时间，我学到了很多东西。</p>
+
+<p>罗素说，年轻人最忍受不了的，就是枯燥的生活，他们需要刺激。然而，我却发现，刺激，和枯燥是一对的。没有枯燥就没有刺激。如果一天到晚都刺激，那么，那种生活将会变得越来越无趣，从而促使人们寻找更加刺激的东西。</p>
+
+<p>如果要生活变得有趣，那么，最好的办法是去寻找一点无聊却很有用的事情来做，这样，生活才会多姿多彩。</p>
 </div>
   
   
@@ -379,12 +347,12 @@ sudo rmmod psmouse
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="category-list"> <li><a href='/blog/categories/linux'>Linux (20)</a></li><li><a href='/blog/categories/影音'>影音 (3)</a></li><li><a href='/blog/categories/成长日记'>成长日记 (43)</a></li><li><a href='/blog/categories/未分类'>未分类 (6)</a></li><li><a href='/blog/categories/编程'>编程 (6)</a></li><li><a href='/blog/categories/联想思考'>联想思考 (10)</a></li><li><a href='/blog/categories/软件'>软件 (11)</a></li> </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2012/10/12/new-post/">保持工作环境的纯洁性</a>
-      </li>
     
       <li class="post">
         <a href="/blog/2012/01/02/2011%E5%B9%B4%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93/">2011年的一点总结</a>
@@ -399,7 +367,11 @@ sudo rmmod psmouse
       </li>
     
       <li class="post">
-        <a href="/blog/2011/10/25/django%E7%9A%84language-code%E8%AE%BE%E7%BD%AE/">Django的language code设置</a>
+        <a href="/blog/2011/10/10/%E6%8E%A7%E5%88%B6%E7%AC%94%E8%AE%B0%E6%9C%AC%E4%B8%8A%E7%9A%84%E8%A7%A6%E6%91%B8%E6%9D%BF/">控制笔记本上的触摸板</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/09/25/%E6%AF%8F%E5%A4%A9%E7%BB%83%E4%B9%A0%E7%94%BB%E7%94%BB%E5%9D%9A%E6%8C%819%E5%B9%B4%E4%B9%8B%E5%90%8E/">每天练习画画坚持9年之后</a>
       </li>
     
   </ul>
@@ -445,12 +417,25 @@ sudo rmmod psmouse
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Brooklyn -
+  Copyright &copy; 2013 - Brooklyn -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'yuanotes';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

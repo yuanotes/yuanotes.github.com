@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 软件 | 谋定而后动]]></title>
   <link href="http://yuanotes.github.com/blog/categories/软件/atom.xml" rel="self"/>
   <link href="http://yuanotes.github.com/"/>
-  <updated>2012-10-12T00:28:42+08:00</updated>
+  <updated>2013-01-09T12:41:01+08:00</updated>
   <id>http://yuanotes.github.com/</id>
   <author>
     <name><![CDATA[Brooklyn]]></name>
@@ -29,13 +29,19 @@
 
 
 <p>Ubuntu直接运行：
-<pre lang="bash">sudo apt-get install poppler-data</pre></p>
+``` bash
+sudo apt-get install poppler-data
+```
+</p>
 
 
 
 
 <p>如果还不行，那么试试这个：
-<pre lang="bash">sudo apt-get install cmap-adobe-cns1 cmap-adobe-gb1 gs-cjk-resource</pre></p>
+``` bash
+sudo apt-get install cmap-adobe-cns1 cmap-adobe-gb1 gs-cjk-resource
+```
+</p>
 
 ]]></content>
   </entry>
@@ -91,7 +97,9 @@
 
 
 <p>下载expect很简单，ubuntu只需要
-<pre lang="bash">sudo apt-get install expect</pre>
+``` bash
+sudo apt-get install expect
+```
 就可以了。</p>
 
 

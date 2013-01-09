@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | 谋定而后动]]></title>
   <link href="http://yuanotes.github.com/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://yuanotes.github.com/"/>
-  <updated>2012-10-12T00:28:42+08:00</updated>
+  <updated>2013-01-09T12:41:01+08:00</updated>
   <id>http://yuanotes.github.com/</id>
   <author>
     <name><![CDATA[Brooklyn]]></name>
@@ -39,7 +39,9 @@
 
 
 <p><strong>1. 找到你的触摸板的设备名称</strong>
-<pre lang="bash">xinput list</pre></p>
+``` bash
+xinput list
+```</p>
 
 
 
@@ -51,12 +53,8 @@
 
 <p><strong>2. 新建一个文件，随便叫什么名字，这个文件是一个shell脚本，可以执行的。</strong>
 内容如下：
-<pre lang="bash" /></p>
-
-
-
-
-<p>#!/bin/bash<br />
+``` bash
+#!/bin/bash<br />
 enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.\+1$"`</p>
 
 
@@ -67,6 +65,7 @@ enabled=`xinput --list-props "ImPS/2 ALPS GlidePoint" | grep -e "Device Enabled.
 else<br />
     xinput --set-prop "ImPS/2 ALPS GlidePoint" "Device Enabled" 1<br />
 fi
+```
 </p>
 
 
@@ -97,17 +96,19 @@ fi
 
 
 <p>启动：
-<pre lang="bash">
+``` bash
 sudo modprobe psmouse
-</pre></p>
+```
+</p>
 
 
 
 
 <p>关闭：
-<pre lang="bash">
+``` bash
 sudo rmmod psmouse
-</pre></p>
+```
+</p>
 
 ]]></content>
   </entry>
@@ -204,29 +205,32 @@ sudo rmmod psmouse
 
 <p>下面的方法主要用于装有openoffice的Linux平台下。Windows也是可以的，方法在上面那个网站上有说明。<br />
 首先，让openoffice运行成一个后台服务器，监听一个socket。
-<pre lang="bash">
+``` bash
 soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard
-</pre></p>
+```
+</p>
 
 
 
 
 <p>假设下载的是DocumentConverter.py，编辑这个文件，在最开始插入一行注释：
-<pre lang="bash">
+``` bash
 #!/usr/bin/env python
-</pre>
+```
 然后让其可运行
-<pre lang="bash">
+``` bash
 chmod +x DocumentConverter.py
-</pre></p>
+```
+</p>
 
 
 
 
 <p>现在可以开始进行批处理了。假设cd到一个有ppt的目录下，运行以下命令进行处理：
-<pre lang="bash">
+``` bash
 for i in `ls *.ppt` ;do DocumentConverter.py $i `echo $i | sed 's/.ppt/.pdf/'`  ; done;
-</pre></p>
+```
+</p>
 
 
 
@@ -252,13 +256,19 @@ for i in `ls *.ppt` ;do DocumentConverter.py $i `echo $i | sed 's/.ppt/.pdf/'`  
 
 
 <p>Ubuntu直接运行：
-<pre lang="bash">sudo apt-get install poppler-data</pre></p>
+``` bash
+sudo apt-get install poppler-data
+```
+</p>
 
 
 
 
 <p>如果还不行，那么试试这个：
-<pre lang="bash">sudo apt-get install cmap-adobe-cns1 cmap-adobe-gb1 gs-cjk-resource</pre></p>
+``` bash
+sudo apt-get install cmap-adobe-cns1 cmap-adobe-gb1 gs-cjk-resource
+```
+</p>
 
 ]]></content>
   </entry>

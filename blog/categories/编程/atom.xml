@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 编程 | 谋定而后动]]></title>
   <link href="http://yuanotes.github.com/blog/categories/编程/atom.xml" rel="self"/>
   <link href="http://yuanotes.github.com/"/>
-  <updated>2012-10-12T00:28:42+08:00</updated>
+  <updated>2013-01-09T12:41:01+08:00</updated>
   <id>http://yuanotes.github.com/</id>
   <author>
     <name><![CDATA[Brooklyn]]></name>
@@ -59,81 +59,6 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Django如何管理静态文件]]></title>
-    <link href="http://yuanotes.github.com/blog/2011/03/28/django%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86css%E7%AD%89%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/"/>
-    <updated>2011-03-28T00:00:00+08:00</updated>
-    <id>http://yuanotes.github.com/blog/2011/03/28/django如何管理css等静态文件</id>
-    <content type="html"><![CDATA[<p>Django的template确实很强大，但是我们不可能把CSS文件也嵌入到template中。</p>
-
-
-
-
-<p>但是CSS又不能简单的放在template目录下让template调用，因为django的目录结构是由urls.py这个文件来指定的，凡是没有指定的路径，外界都不能访问。</p>
-
-
-
-
-<p>所以，最好的办法，是指定一个目录，该目录下所有的文件都能够被匿名用户访问。</p>
-
-
-
-
-<p>虽然django的官方文档很详细，但是，一般人还是很难看懂其中staticfiles app到底是在扯什么东西。</p>
-
-
-
-
-<p>好在django默认建立的project的settings.py文件中有MEDIA_ROOT，MEDIA_URL等选项。去网上搜索了一把，找到了<a href="http://twigstechtips.blogspot.com/2009/08/django-how-to-serve-media-files-css.html">一篇文章</a>（墙外），差不多可以解决这个问题。虽然，貌似没有staticfiles神马的用起来方便。</p>
-
-
-
-
-<p>首先，在settings.py文件中定义（以下代码都是写文章时候手打的，如有错误请留言指正）
-<pre lang="python">
-MEDIA_ROOT=os.path.join(os.path.dirname(__file__),'media').replace('\\','/') #如果是*nix系统，不需要replace函数
-MEDIA_URL='/media/' #末尾一定要加上/
-ADMIN_MEDIA_PREFIX = '/media/admin/' #填啥都可以，就是不能跟MEDIA_URL一样
-</pre></p>
-
-
-
-
-<p>然后，在urls.py文件中：
-<pre lang="python">
-from django.views.static import * 
-from django.conf import settings</pre></p>
-
-
-
-
-<p>#...<br />
-#以下是urlpatterns中的<br />
-(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-</path></p>
-
-
-
-
-<p>做完这些之后，测试一下 yourdomain.com/media/default.css<br />
-仅仅输入 yourdomain.com/media/ 是看不到任何东西的。</p>
-
-
-
-
-<p>最后，如果没有什么问题，那么，在template的html文件中，可以直接这么调用css以及image等文件啦，
-<pre lang="html">
-<link rel="stylesheet" type="text/css" href="http://yuanotes.github.com/media/css/default.css" />
-</pre></p>
-
-
-
-
-<p></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[批量转换ppt为pdf文件]]></title>
     <link href="http://yuanotes.github.com/blog/2010/11/18/%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2ppt%E4%B8%BApdf%E6%96%87%E4%BB%B6/"/>
     <updated>2010-11-18T00:00:00+08:00</updated>
@@ -160,29 +85,32 @@ from django.conf import settings</pre></p>
 
 <p>下面的方法主要用于装有openoffice的Linux平台下。Windows也是可以的，方法在上面那个网站上有说明。<br />
 首先，让openoffice运行成一个后台服务器，监听一个socket。
-<pre lang="bash">
+``` bash
 soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard
-</pre></p>
+```
+</p>
 
 
 
 
 <p>假设下载的是DocumentConverter.py，编辑这个文件，在最开始插入一行注释：
-<pre lang="bash">
+``` bash
 #!/usr/bin/env python
-</pre>
+```
 然后让其可运行
-<pre lang="bash">
+``` bash
 chmod +x DocumentConverter.py
-</pre></p>
+```
+</p>
 
 
 
 
 <p>现在可以开始进行批处理了。假设cd到一个有ppt的目录下，运行以下命令进行处理：
-<pre lang="bash">
+``` bash
 for i in `ls *.ppt` ;do DocumentConverter.py $i `echo $i | sed 's/.ppt/.pdf/'`  ; done;
-</pre></p>
+```
+</p>
 
 
 
@@ -241,7 +169,8 @@ al 然后 将al 与 n[0]..n[7] 8个异或就得到最终的序列号。<br />
 当然这8个要跟 程序里定义好的8个o[0]...o[7]相同，这样就算序列号正确了。<br />
 这样看来，就是根据程序里的8个标准的序列号反推就能得到输入的序列号了。那怎么反推呢？<br />
 这个问题让我纠结了好久，最后，还是找到了规律。规律最后再说。首先给出自己写的算法，python版的。
-<pre lang="python" line="1"># -*- coding:utf-8 -*-
+``` python
+# -*- coding:utf-8 -*-
 #反汇编时得到的标准序列号
 o=[0x71,0x18,0x59,0x1b,0x79,0x42,0x45,0x4c]
 #求al,过程很有趣
@@ -252,7 +181,9 @@ for i in o:
 s=[0]*8
 for i in range(8):
     s[i]=al^o[i]^0x32
-    print chr(s[i])</pre></p>
+    print chr(s[i])
+```
+</p>
 
 
 
@@ -273,7 +204,8 @@ for i in range(8):
 
 
 <p>首先是他找来的代码。注意，虽然代码不同，但是，<font color="red">这篇文章里所有的代码都是一个原理</font>，最后我会说明。
-<pre lang="c" line="1">#include <stdio.h>
+``` c
+#include <stdio.h>
 void main()
 {
  char middle_1[4];
@@ -294,7 +226,9 @@ void main()
   b[i]=b[i]^0x32;
   cout<<b[i]<<' ';
  }
-}</stdio.h></pre></p>
+}</stdio.h>
+```
+</p>
 
 <p>这个是正确的代码，但是还是没有我的那个简便。其实我那个python版的跟这个是一个原理。这个代码几乎和加密是反过来的，把程序里的标准8位序列两两异或，再运算，然后得到了al，最后通过al得到需要输入的8位序列；而我的是将标准8位序列全异或一遍，然后得到al。得到al了就能解决其他的问题了。</p>
 
@@ -315,7 +249,8 @@ n[7]^al=o[7]</p>
 <p>从这里可以看出，我的python版的程序和C语言版的是一个原理。</p>
 
 <p>不过还有一种算法。这得追溯到看雪论坛的那位老大了，很有意思的人。他知道了异或的运算法则，但是走了弯路，居然在反推的时候，将8位输入序列和al设成9个未知数，而此时又有9个方程，那他就能推出这9个未知数了。虽然这个方法很笨，但是，我当时一筹莫展的时候可想不到这样的方法。所以，对于这位老大的研究精神我还是有点佩服的。贴出他最后的得出的程序，跟上面两个原理一样。再贴一下他的网址吧，<a href="http://bbs.pediy.com//showthread.php?t=66222&referrerid=207614">http://bbs.pediy.com//showthread.php?t=66222&referrerid=207614</a>那里有很有意思的推导过程。
-<pre lang="c" line="1">#include <stdio.h>
+``` c
+#include <stdio.h>
 #include <conio.h>
 void main()
 {
@@ -331,7 +266,9 @@ void main()
         printf("%c",a[i]);
     }
     getch();
-}</conio.h></stdio.h></pre></p>
+}</conio.h></stdio.h>
+```
+</p>
 
 ]]></content>
   </entry>
@@ -371,20 +308,24 @@ void main()
 
 
 
-<p><pre lang="text">
+<p>
+```
 Error  179  error C2248: std::basic_ios _Elem,_Traits::basic_ios : cannot access private member declared in class std::basic_ios _Elem,_Traits c:\program files\microsoft visual studio 8\vc\include\fstream 802
-</pre>
+```
 这个问题在MSDN上有人提出，但是没人给出答案。我查到了CSDN上，发现也有人出现类似错误，贴下他的出错的代码。</p>
 
 
 
 
-<p><pre lang="cpp" line="1">
+<p>
+``` cpp
 #include <iostream>
 #include <fstream>
 int main(int argc, char* argv[])
 {
-    using namespace std;</fstream></iostream></pre></p>
+    using namespace std;</fstream></iostream>
+```
+</p>
 
 
 
@@ -403,7 +344,7 @@ int main(int argc, char* argv[])
 </p>
 
 <p>CSDN上没人给出好的答案，后来他自己结贴了并给出了修改后的代码。
-<pre lang="cpp" line="1">
+``` cpp
 #include <iostream>
 #include <fstream>
 int main(int argc, char* argv[])
@@ -412,7 +353,9 @@ int main(int argc, char* argv[])
     (*( argc > 2
         ? &ofstream(argv[2],ios::out|ios::binary)
         :&cout
-        )) <<</fstream></iostream></pre></p>
+        )) <<</fstream></iostream>
+```
+</p>
 
 <p>        (*( argc >  1<br />
         ? &ifstream(argv[1],ios::in|ios::binary)<br />
@@ -424,6 +367,28 @@ int main(int argc, char* argv[])
 从这里面什么也看不出来，但是总还是有一点端倪的。接下来在另一个论坛找到了相关问题的解决办法。有人回帖说这个问题可能是将一个fstream对象赋值给了另一个对象。里面也有人提到，是不是函数的形参不是通过引用传递的，这样也能出现这样的错误。</p>
 
 <p>因此，我将所有的函数的形参都改过来了，最后发现，大功告成，除了一些警告之外，没有错误了。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[自己做的一个邮件发送器]]></title>
+    <link href="http://yuanotes.github.com/blog/2008/10/24/an-email-sender-by-myself/"/>
+    <updated>2008-10-24T00:00:00+08:00</updated>
+    <id>http://yuanotes.github.com/blog/2008/10/24/an-email-sender-by-myself</id>
+    <content type="html"><![CDATA[<p>没什么好写的，留着以后自己慢慢自我欣赏了，其实我自己都是用客户端发邮件的，这个东西做出来一般自己都不用，丑不说，功能性还不强，不过，也算作一个纪念了。</p>
+
+
+
+
+<p>嗯，有时间真的应该看看 软件工程 一系列的书，虽然自己目前还是个独行侠，但是，独行侠总归要有个侠的样子。
+<a href="https://cid-9c865a75990fb7d7.skydrive.live.com/viewpermissions.aspx/%e7%a8%8b%e5%ba%8f/send%7C_mail%7C_beta%20v1.1.zip">skydrive</a></p>
+
+
+
+
+<p>上个图吧
+<a rel="lightbox[2008-10-2-22-22-28]" href="http://lh6.ggpht.com/_Ikp4qpHhw18/SRBMdu5Tv7I/AAAAAAAAAFU/0uyXJYOeoHo/send-mail-beta.jpg?imgmax=800"><img class="pie-img" src="http://lh6.ggpht.com/_Ikp4qpHhw18/SRBMdu5Tv7I/AAAAAAAAAFU/0uyXJYOeoHo/send-mail-beta.jpg?imgmax=160" alt="send-mail-beta.jpg" width="160" height="120" /></a></p>
 
 ]]></content>
   </entry>
